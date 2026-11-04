@@ -1,0 +1,821 @@
+{
+  "sheetInfo": {
+    "sheetId": "1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ",
+    "sheetUrl": "https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388",
+    "lastSyncedAt": "2026-11-04 15:53"
+  },
+  "media": [
+    {
+      "id": "mat-root",
+      "title": "Nguyên Liệu Tổng (Master Folder)",
+      "rawTitle": "Nguyên Liệu Tổng",
+      "type": "folder",
+      "category": "root",
+      "url": "https://drive.google.com/drive/folders/1uwBsbBsm9uJYGZ2bJWOEAXQgImR-x1wg?usp=sharing",
+      "description": "Thư mục mẹ chứa toàn bộ ảnh, video, tài liệu truyền thông của Haru5C trên Google Drive",
+      "tags": [
+        "Tổng hợp",
+        "Master Drive",
+        "Tất cả tài nguyên"
+      ],
+      "isPinned": true
+    },
+    {
+      "id": "img-1-1",
+      "title": "1. Sản Phẩm",
+      "rawTitle": "Sản Phẩm",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/17iXK1SnKQi2JKWEJSLdAc3ern4UKdMwZ?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Sản phẩm & Vận hành"
+      ],
+      "description": "Kho ảnh tư liệu Sản Phẩm phục vụ thiết kế, content và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "vid-1-2",
+      "title": "1. Feedback Đợt 1",
+      "rawTitle": "Feedback Đợt 1",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1vC4gDn8LX8JvMqSu97fPMAIi9ychdQoM?usp=drive_link",
+      "tags": [
+        "Video",
+        "Chiến dịch Đợt 1",
+        "Bằng chứng & Review"
+      ],
+      "description": "Kho video tư liệu Feedback Đợt 1 dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "img-2-3",
+      "title": "2. Background",
+      "rawTitle": "Background",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1ae3IxpB2Dg20A4DOEpW4uDah4vj5LoKe?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Background phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-2-4",
+      "title": "2. Review Đợt 1",
+      "rawTitle": "Review Đợt 1",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1LFUI-mFZFM_v7tRq-cLYCn3Fu2n90K_W?usp=sharing",
+      "tags": [
+        "Video",
+        "Chiến dịch Đợt 1",
+        "Bằng chứng & Review"
+      ],
+      "description": "Kho video tư liệu Review Đợt 1 dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "img-3-5",
+      "title": "3. Thumb",
+      "rawTitle": "Thumb",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1MESpWepSviOTscn5uFo7ox8FiMWG9qxZ?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Thumb phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-3-6",
+      "title": "3. Livestream Đợt 1",
+      "rawTitle": "Livestream Đợt 1",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1kQPu1ZMp2_GgQi9mtiTmewNFQrc7d7P3?usp=drive_link",
+      "tags": [
+        "Video",
+        "Chiến dịch Đợt 1",
+        "Livestream"
+      ],
+      "description": "Kho video tư liệu Livestream Đợt 1 dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "img-4-7",
+      "title": "4. Flame FB",
+      "rawTitle": "Flame FB",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1WPmGPzxk0vL0P12fEQmY3XkEHos_IEri?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Flame FB phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-4-8",
+      "title": "4. Fina 8 Video Đợt 1",
+      "rawTitle": "Fina 8 Video Đợt 1",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1ZVm9ZQZYjFbUOcFitH-yVdGJkvUPT8Y1?usp=drive_link",
+      "tags": [
+        "Video",
+        "Chiến dịch Đợt 1",
+        "Sản xuất & Vận hành"
+      ],
+      "description": "Kho video tư liệu Fina 8 Video Đợt 1 dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "img-5-9",
+      "title": "5. Flame Youtube",
+      "rawTitle": "Flame Youtube",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1AuF8LmdC6v481cKO3Jf2V-iHdLfC1vkC?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Flame Youtube phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-5-10",
+      "title": "5. Chia Sẻ Đợt 1",
+      "rawTitle": "Chia Sẻ Đợt 1",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1HZMJLF8XjZzTnN2vUDJ9jgLlExWmzDcp?usp=drive_link",
+      "tags": [
+        "Video",
+        "Chiến dịch Đợt 1",
+        "Sản xuất & Vận hành"
+      ],
+      "description": "Kho video tư liệu Chia Sẻ Đợt 1 dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "img-6-11",
+      "title": "6. Banner",
+      "rawTitle": "Banner",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1xk-Js4t0EXiXHWaUNhJ5jCfltirkmfOm?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Banner phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-6-12",
+      "title": "6. Chuyên Gia",
+      "rawTitle": "Chuyên Gia",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1s0QqpJny8g1kvvCANeAP_QKgwZDZ_cDY?usp=sharing",
+      "tags": [
+        "Video",
+        "Uy tín & Chuyên môn"
+      ],
+      "description": "Kho video tư liệu Chuyên Gia dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-7-13",
+      "title": "7. Giấy Tờ Chứng Nhận",
+      "rawTitle": "Giấy Tờ Chứng Nhận",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1CeVhvj27-OdOkqiznX78lSberwe_BIaB?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Uy tín & Chuyên môn"
+      ],
+      "description": "Kho ảnh tư liệu Giấy Tờ Chứng Nhận phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-7-14",
+      "title": "7. Kỹ Sư",
+      "rawTitle": "Kỹ Sư",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1hQPvAfF0KWmnKOVrtinl2uDni_GuG60R?usp=sharing",
+      "tags": [
+        "Video",
+        "Uy tín & Chuyên môn"
+      ],
+      "description": "Kho video tư liệu Kỹ Sư dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-8-15",
+      "title": "8. Feeback",
+      "rawTitle": "Feeback",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1vN9izly-2hqlMcdoSdNtJn8wKwffrGDz?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Feeback phục vụ thiết kế, content và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "vid-8-16",
+      "title": "8. LiveStream",
+      "rawTitle": "LiveStream",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1eZuEEBLcRzV2CSBKgvK0OytTkCdSJHyC?usp=sharing",
+      "tags": [
+        "Video",
+        "Livestream"
+      ],
+      "description": "Kho video tư liệu LiveStream dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-9-17",
+      "title": "9. Chủ Vườn",
+      "rawTitle": "Chủ Vườn",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1687knazU_Iq2Xxn1KIj9NRhtyf1ryKsK?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Bằng chứng & Review"
+      ],
+      "description": "Kho ảnh tư liệu Chủ Vườn phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-9-18",
+      "title": "9. Giấy Tờ Chứng Nhận",
+      "rawTitle": "Giấy Tờ Chứng Nhận",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1qlVBLmV8b2sjiyx9EgO0wQg0Y_nuqDZO?usp=sharing",
+      "tags": [
+        "Video",
+        "Uy tín & Chuyên môn"
+      ],
+      "description": "Kho video tư liệu Giấy Tờ Chứng Nhận dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-10-19",
+      "title": "10. Buttom",
+      "rawTitle": "Buttom",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1_hSY8p-fXLkhQ099TDPfhfQVKvMjh07P?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Buttom phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-10-20",
+      "title": "10. Chủ Vườn",
+      "rawTitle": "Chủ Vườn",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1l2GgFwFmrKns2DEas5mP5I9pXQCcVXU_?usp=sharing",
+      "tags": [
+        "Video",
+        "Bằng chứng & Review"
+      ],
+      "description": "Kho video tư liệu Chủ Vườn dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-11-21",
+      "title": "11. Bảng Giá",
+      "rawTitle": "Bảng Giá",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1rPBdE1fotUsQI88N-frKsWSDJ__dvp9Q?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Sản phẩm & Vận hành"
+      ],
+      "description": "Kho ảnh tư liệu Bảng Giá phục vụ thiết kế, content và quảng cáo",
+      "isPinned": true
+    },
+    {
+      "id": "vid-11-22",
+      "title": "11. Cảnh Trám",
+      "rawTitle": "Cảnh Trám",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1N09ldxkS2gcxbHQ5FXc3HNjixSzNT4_1?usp=sharing",
+      "tags": [
+        "Video",
+        "Footage & Dựng video"
+      ],
+      "description": "Kho video tư liệu Cảnh Trám dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-12-23",
+      "title": "12. Avarta Người Dùng",
+      "rawTitle": "Avarta Người Dùng",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1A7wA45VVzJzF68xTiTdS-OIEHwFituFP?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Bằng chứng & Review"
+      ],
+      "description": "Kho ảnh tư liệu Avarta Người Dùng phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-12-24",
+      "title": "12. Nhà Máy",
+      "rawTitle": "Nhà Máy",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1oIysTGh0IY1-0AL9fDEN9WnPMyH-LaJ2?usp=sharing",
+      "tags": [
+        "Video",
+        "Sản xuất & Vận hành"
+      ],
+      "description": "Kho video tư liệu Nhà Máy dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-13-25",
+      "title": "13. Kho",
+      "rawTitle": "Kho",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1DaqxYmecjKMExWdl7hA5odTMirYui77S?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Sản phẩm & Vận hành"
+      ],
+      "description": "Kho ảnh tư liệu Kho phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-13-26",
+      "title": "13. Kol.Koc",
+      "rawTitle": "Kol.Koc",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1NksDnWJK-Nz6yrslRyOesxhIdzQETGwB?usp=sharing",
+      "tags": [
+        "Video",
+        "Bằng chứng & Review"
+      ],
+      "description": "Kho video tư liệu Kol.Koc dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-14-27",
+      "title": "14. Đại Lý",
+      "rawTitle": "Đại Lý",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1FnNrlqCa4L-BhpGcwKNfZCarVoUu4CzM?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Sản phẩm & Vận hành"
+      ],
+      "description": "Kho ảnh tư liệu Đại Lý phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-14-28",
+      "title": "14. Kỹ Sư",
+      "rawTitle": "Kỹ Sư",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1hQPvAfF0KWmnKOVrtinl2uDni_GuG60R?usp=sharing",
+      "tags": [
+        "Video",
+        "Uy tín & Chuyên môn"
+      ],
+      "description": "Kho video tư liệu Kỹ Sư dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-15-29",
+      "title": "15. Chuyên Gia",
+      "rawTitle": "Chuyên Gia",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1FJ98FPrCAVlyM4r660Xee3fedIwPv7Sn?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Uy tín & Chuyên môn"
+      ],
+      "description": "Kho ảnh tư liệu Chuyên Gia phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-15-30",
+      "title": "15. Đại Lý",
+      "rawTitle": "Đại Lý",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1s-lvYTvYfcsToXqYSd1ZsqCsWVVldkxJ?usp=sharing",
+      "tags": [
+        "Video",
+        "Sản xuất & Vận hành"
+      ],
+      "description": "Kho video tư liệu Đại Lý dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-16-31",
+      "title": "16. Mẫu Livestream",
+      "rawTitle": "Mẫu Livestream",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1nJlY_eassMC015qKsd5INXs-BNJehdBF?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Mẫu Livestream phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-16-32",
+      "title": "16. Kho",
+      "rawTitle": "Kho",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1pWHnh78y4KmyRSSQTqAI3Ay5RknT-c6e?usp=sharing",
+      "tags": [
+        "Video",
+        "Sản xuất & Vận hành"
+      ],
+      "description": "Kho video tư liệu Kho dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-17-33",
+      "title": "17. Kol.Koc",
+      "rawTitle": "Kol.Koc",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1OY7G-4ZZ0PoC5OUFKhFQfwAYe2x6MHiU?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Bằng chứng & Review"
+      ],
+      "description": "Kho ảnh tư liệu Kol.Koc phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-17-34",
+      "title": "17. Hiệu Ứng",
+      "rawTitle": "Hiệu Ứng",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1Mrb5bfJGLHzFG42PK2I50CCDUL4pPlqE?usp=sharing",
+      "tags": [
+        "Video",
+        "Footage & Dựng video"
+      ],
+      "description": "Kho video tư liệu Hiệu Ứng dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-18-35",
+      "title": "18. Nhà Văn Hóa",
+      "rawTitle": "Nhà Văn Hóa",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1hg_IZh2dxE8Fa1u4nJSq-_24Zd27bEBg?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Thiết kế & Đồ họa"
+      ],
+      "description": "Kho ảnh tư liệu Nhà Văn Hóa phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-18-36",
+      "title": "18. Nhà Văn Hóa",
+      "rawTitle": "Nhà Văn Hóa",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/1BXGec3EXwez6Oobx4tuyt0G-jXaxMrRL?usp=sharing",
+      "tags": [
+        "Video",
+        "Sản xuất & Vận hành"
+      ],
+      "description": "Kho video tư liệu Nhà Văn Hóa dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "img-19-37",
+      "title": "19. Kỹ Sư",
+      "rawTitle": "Kỹ Sư",
+      "type": "image",
+      "category": "ảnh",
+      "url": "https://drive.google.com/drive/folders/1Zj7hng8Fo21P8fBST0eZvLVAQEBpneWX?usp=sharing",
+      "tags": [
+        "Ảnh",
+        "Uy tín & Chuyên môn"
+      ],
+      "description": "Kho ảnh tư liệu Kỹ Sư phục vụ thiết kế, content và quảng cáo",
+      "isPinned": false
+    },
+    {
+      "id": "vid-19-38",
+      "title": "19. Background",
+      "rawTitle": "Background",
+      "type": "video",
+      "category": "video",
+      "url": "https://drive.google.com/drive/folders/11Mry4xYr1soihS66IOEDBmky4ZP56RtX?usp=sharing",
+      "tags": [
+        "Video",
+        "Footage & Dựng video"
+      ],
+      "description": "Kho video tư liệu Background dùng dựng reel, tiktok và quảng cáo",
+      "isPinned": false
+    }
+  ],
+  "channels": [
+    {
+      "id": "chan-1-0",
+      "stt": "1",
+      "platformType": "Tiktok Brand",
+      "platform": "TikTok",
+      "channelName": "Tiktok Brand",
+      "url": "",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "",
+      "status": "Đang chuẩn bị"
+    },
+    {
+      "id": "chan-2-1",
+      "stt": "2",
+      "platformType": "Tiktok Performance",
+      "platform": "TikTok",
+      "channelName": "Tiktok Performance",
+      "url": "",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "",
+      "status": "Đang chuẩn bị"
+    },
+    {
+      "id": "chan-3-2",
+      "stt": "3",
+      "platformType": "Youtube Brand",
+      "platform": "YouTube",
+      "channelName": "Youtube Brand",
+      "url": "",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "",
+      "status": "Đang chuẩn bị"
+    },
+    {
+      "id": "chan-4-3",
+      "stt": "4",
+      "platformType": "Youtube Performance",
+      "platform": "YouTube",
+      "channelName": "Youtube Performance",
+      "url": "",
+      "account": "",
+      "password": "ze!Y6McV8z0W",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "",
+      "status": "Đang chuẩn bị"
+    },
+    {
+      "id": "chan-5-4",
+      "stt": "5",
+      "platformType": "Facebook Brand",
+      "platform": "Facebook",
+      "channelName": "Phân Bón Haru5C Chính Hãng",
+      "url": "https://www.facebook.com/profile.php?id=61595555205954&notif_id=1793028443651712&notif_t=profile_plus_admin_invite&ref=notif",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "Vương",
+      "status": "Đang hoạt động"
+    },
+    {
+      "id": "chan-6-5",
+      "stt": "6",
+      "platformType": "Facebook Performance",
+      "platform": "Facebook",
+      "channelName": "Tổng Kho Phân Bón Haru5C Việt Nam",
+      "url": "https://www.facebook.com/profile.php?id=61595994415108&notif_id=1793028534630054&notif_t=profile_plus_admin_invite&ref=notif",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "Vương",
+      "status": "Đang hoạt động"
+    },
+    {
+      "id": "chan-7-6",
+      "stt": "7",
+      "platformType": "Facebook Performance",
+      "platform": "Facebook",
+      "channelName": "Tổng Kho Phân Bón Hữu Cơ Haru5C Chính Hãng",
+      "url": "https://www.facebook.com/profile.php?id=61595756527714&notif_id=1793028343725873&notif_t=profile_plus_admin_invite&ref=notif",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "Vương",
+      "status": "Đang hoạt động"
+    },
+    {
+      "id": "chan-8-7",
+      "stt": "8",
+      "platformType": "Facebook Performance",
+      "platform": "Facebook",
+      "channelName": "Tổng Kho Phân Bón Hữu Cơ Haru5C",
+      "url": "https://www.facebook.com/profile.php?id=61595990907466&notif_id=1793028387674070&notif_t=profile_plus_admin_invite&ref=notif",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "Phước",
+      "status": "Đang hoạt động"
+    },
+    {
+      "id": "chan-9-8",
+      "stt": "9",
+      "platformType": "Facebook Performance",
+      "platform": "Facebook",
+      "channelName": "Tổng Công Ty Phân Bón Haru5C Việt Nam",
+      "url": "https://www.facebook.com/profile.php?id=61595806145425&notif_id=1793028642656484&notif_t=profile_plus_admin_invite&ref=notif",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "Tùng",
+      "status": "Đang hoạt động"
+    },
+    {
+      "id": "chan-10-9",
+      "stt": "10",
+      "platformType": "Cộng Đồng FB",
+      "platform": "Facebook",
+      "channelName": "Cộng Đồng FB",
+      "url": "",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "",
+      "status": "Đang chuẩn bị"
+    },
+    {
+      "id": "chan-11-10",
+      "stt": "11",
+      "platformType": "Shopee",
+      "platform": "Shopee",
+      "channelName": "Shopee",
+      "url": "",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "",
+      "status": "Đang chuẩn bị"
+    }
+  ],
+  "tools": [
+    {
+      "id": "tool-1-0",
+      "stt": "1",
+      "name": "ChatGPT",
+      "account": "mayw.altbarbro@gmail.com",
+      "password": "CHATLGBT9999",
+      "authCode": "AAAJVFW2JNEMEBHZRHRWHZ2OV7EEJFUN",
+      "manager": "Vương",
+      "url": "https://chatgpt.com",
+      "category": "AI & Design"
+    },
+    {
+      "id": "tool-2-1",
+      "stt": "2",
+      "name": "Gemini + Veo3",
+      "account": "hieuhanh2564@gmail.com",
+      "password": "Vuongquan2106@",
+      "authCode": "",
+      "manager": "Vương",
+      "url": "https://gemini.google.com",
+      "category": "AI & Design"
+    },
+    {
+      "id": "tool-3-2",
+      "stt": "3",
+      "name": "LadiPage",
+      "account": "hoangmanhcuong463@gmail.com",
+      "password": "LaC0011@",
+      "authCode": "",
+      "manager": "Hiệu",
+      "url": "https://ladipage.vn",
+      "category": "AI & Design"
+    },
+    {
+      "id": "tool-4-3",
+      "stt": "4",
+      "name": "Capcut",
+      "account": "",
+      "password": "",
+      "authCode": "",
+      "manager": "Vương",
+      "url": "https://www.capcut.com",
+      "category": "AI & Design"
+    },
+    {
+      "id": "tool-7-4",
+      "stt": "7",
+      "name": "grok",
+      "account": "",
+      "password": "",
+      "authCode": "",
+      "manager": "",
+      "url": "https://x.com/i/grok",
+      "category": "AI & Design"
+    }
+  ],
+  "competitors": [
+    {
+      "id": "comp-1",
+      "brand": "Rootbio",
+      "usp": "Tái sinh rễ, phá vỡ cấu trúc đất\n chai cứng, tăng khả năng quang \nhợp và giúp cây phục hồi nhanh \nsau thu hoạch",
+      "message": "rễ bung mạnh, lá xanh mướt, đọt ra đồng \nloạt., cây ra hoa đều, tỷ lệ đậu trái cao \nvượt trội.,Năng suất tăng 20–35%, giảm \ntới 40% chi phí phân hóa học.\n\nNPK 3-3-3 cân bằng: nuôi đều rễ — thân\n — lá, không gây sốc phân., Axit Humic 7% \n(cao nhất thị trường): làm đất tơi xốp, tăng \nđộ mùn, giải độc đất.",
+      "promotion": "Mua THÙNG 20 chai lấy giá\n sỉ tại kho Giảm giá 45%\n Mua 3 tặng 1 – Mua 4\n tặng 2 – Mua 5 tặng 3\n MUA 10 TẶNG 6",
+      "sources": "bao nông nghiêp môi trường, dân việt",
+      "fbUrl": "https://www.facebook.com/reel/2784707701970446/?__cft__[0]=AZiF3ngGu3zuNwSBk8nkEh9S5mcmyMQZe-2nUD53nd0RPm6zZdhvITiXWkDmk7UFvI3HDK2PEqfwdnYjyL5cqjUpjJA3Gv-v7U1eiLJSgGDaS4qfxEwoqWxNd68LsVFfV8LdHiA2trppphYDAmPKvP_8BDbDWzgyhVm-Ho73Vh_xYf1_VbZV8sdjmVXhRp3j7sXrJjhZpeaGwbA3YoZvQ0rpPMM&__tn__=%2CO%2CP-R"
+    },
+    {
+      "id": "comp-2",
+      "brand": "Kagreen",
+      "usp": "Kích thích hệ thống rễ cám phát \ntriển cực mạnh, giúp cây bung đọt\n nhanh, lá xanh dày, tăng khả năng \nchống chịu trước sâu bệnh \nvà thời tiết",
+      "message": "phân bón Kagreen là sự kết hợp dinh dường \nĐA TẦNG bao gồm đầy đủ NPK cân bằng\n 6-6-6 kết hợp với Acid Humic, Fulvic, Trung\n và vi lượng, cộng với công nghệ đưa Vi Sinh\n Bào Tử K-IMO vào phân bón giúp cây trồng\nkích rễ mạnh, Bung đọt nhanh, Xanh lá, Mập\n cành, lại cải tạo đất giúp đất tơi xốp và\n màu mỡ.",
+      "promotion": "Mua 3 tặng 1\r\n Mua 5 tặng 3 \r\n Mua 10 tặng 6",
+      "sources": "bao nông nghiêp môi trường,Vtv9\nhttps://kagreen.kagri.vn/",
+      "fbUrl": "https://www.facebook.com/kagreenn/?locale=vi_VN"
+    },
+    {
+      "id": "comp-3",
+      "brand": "Bio36",
+      "usp": "Kích rễ cực mạnh,Đẩy đọt, bật chồi,\nCải tạo đất,Tăng sức đề kháng",
+      "message": "bio 36 bao gồm Humic acid, Fulvic acid, K2O,…\nvà chứa các vi sinh vật có lợi, enzyme và các\n chất dinh dưỡng thiết yếu cho cây trồng, giúp \ncây bung rễ, nhú đọt, bật chồi.",
+      "promotion": "Mua 10 tặng 5, Mua 5 tặng 2,\n Mua 3 tặng 1\n Mua 1 thùng tặng 1 thùng",
+      "sources": "bio3c.com",
+      "fbUrl": "https://www.facebook.com/bio36p/"
+    },
+    {
+      "id": "comp-4",
+      "brand": "Dasshu",
+      "usp": "Hấp thụ siêu tốc,Cải tạo nền đất,\nSản phẩm thân thiện với môi \ntrường",
+      "message": "sử dụng nguồn nguyên liệu nhập khẩu trực tiếp \ntừ Nhật Bản, kết hợp các công nghệ hiện đại như\n công nghệ Nano, siêu vi lượng Chelate, và \nAxit Amin (Amino Acid) giúp cây trồng hấp thụ \ndinh dưỡng nhanh hơn gấp nhiều lần so với các\n loại phân bón thông thường.",
+      "promotion": "Mua 5 tặng 4, 10 tặng 10",
+      "sources": "https://dasshu.vn/, báo công dân pháp luật,vtv3",
+      "fbUrl": "https://www.facebook.com/DasshuZvn/"
+    },
+    {
+      "id": "comp-5",
+      "brand": "Zozo",
+      "usp": "Công nghệ dạng gel đậm đặc,Tích\n hợp sinh học: Bổ sung vi sinh vật \ncó lợi giúp phân giải chất hữu cơ\ntồn dư và cải tạo nền đất bạc màu",
+      "message": "NPK 20-20-20+TE tốt cho mọi giai đoạn,hoạt \nchất Molipden rất cần thiết cho quá trình cố định \nđạm, quang hợp và phát triển,Vi sinh Bacillus ức \nchế nấm, vi khuẩn gây hại, Chất hữu cơ cải tạo \nđất chai, phục hồi đất canh tác lâu năm",
+      "promotion": "Mua 1 tặng 1, 2 tặng 2",
+      "sources": "bigwin.com.vn,bao nông nghiêp môi trường\nbáo dân việt",
+      "fbUrl": "https://www.facebook.com/tongkhophanbonzozo/"
+    }
+  ]
+}
