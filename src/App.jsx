@@ -6,6 +6,7 @@ import ChannelSection from './components/ChannelSection';
 import ToolSection from './components/ToolSection';
 import CompetitorSection from './components/CompetitorSection';
 import DailyChecklistSection from './components/DailyChecklistSection';
+import DutyScheduleSection from './components/DutyScheduleSection';
 import ResourceModal from './components/ResourceModal';
 import Toast from './components/Toast';
 import {
@@ -13,6 +14,7 @@ import {
   togglePin,
   syncGoogleSheet,
   toggleChecklistTask,
+  updateDutyAssignee,
   createResource,
   updateResource,
   deleteResource
@@ -24,6 +26,7 @@ import {
   Wrench,
   Swords,
   CheckSquare,
+  CalendarCheck2,
   Layers,
   Sparkles,
   Command,
@@ -38,10 +41,10 @@ export default function App() {
     tools: [],
     competitors: [],
     dailyReports: {},
-    proposals: [],
+    dutySchedule: [],
     sheetInfo: {}
   });
-  const [activeTab, setActiveTab] = useState('checklist'); // Default to checklist or media
+  const [activeTab, setActiveTab] = useState('duty'); // Set 'duty' or 'checklist' as prominent
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -133,7 +136,6 @@ export default function App() {
 
   // Checklist Task Toggle
   const handleToggleTask = async (date, memberName, taskId) => {
-    // Optimistic UI update
     setData(prev => {
       const updatedReports = { ...prev.dailyReports };
       if (updatedReports[date]) {
@@ -166,14 +168,34 @@ export default function App() {
     }
   };
 
-  // Sync Google Sheet (Both sheets)
+  // Update Duty Assignee
+  const handleUpdateDutyAssignee = async (date, assignees) => {
+    try {
+      setData(prev => ({
+        ...prev,
+        dutySchedule: (prev.dutySchedule || []).map(d => {
+          if (d.date === date) return { ...d, assignees };
+          return d;
+        })
+      }));
+      const res = await updateDutyAssignee(date, assignees);
+      if (res.success) {
+        setData(prev => ({ ...prev, dutySchedule: res.dutySchedule }));
+        addToast(`Đã cập nhật người trực ngày ${date}!`, 'success');
+      }
+    } catch (err) {
+      addToast('Lỗi khi cập nhật người trực', 'error');
+    }
+  };
+
+  // Sync Google Sheet (3 sheets)
   const handleSync = async () => {
     try {
       setIsSyncing(true);
       const res = await syncGoogleSheet();
       if (res.success) {
         setData(res.data);
-        addToast('Đồng bộ Google Sheet & Báo Cáo thành công!', 'success');
+        addToast('Đồng bộ dữ liệu từ 3 Google Sheet thành công!', 'success');
       }
     } catch (err) {
       console.error(err);
@@ -187,7 +209,7 @@ export default function App() {
   const handleOpenAddModal = (type = activeTab) => {
     setModalState({
       isOpen: true,
-      type: type === 'checklist' ? 'media' : type,
+      type: ['duty', 'checklist'].includes(type) ? 'media' : type,
       initialData: null
     });
   };
@@ -234,8 +256,10 @@ export default function App() {
   };
 
   const todayTasks = (data.dailyReports?.['04/11'] || []).reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
+  const todayDuty = (data.dutySchedule || []).find(d => d.date === '04/11');
 
   const tabs = [
+    { id: 'duty', label: 'Lịch Trực Nhật', icon: CalendarCheck2, count: todayDuty?.assignees ? 'Tuấn - Hiệu' : '30 ngày' },
     { id: 'checklist', label: 'Báo Cáo & Checklist', icon: CheckSquare, count: todayTasks || 18 },
     { id: 'media', label: 'Kho Media Haru', icon: FolderOpen, count: data.media?.length - 1 || 0 },
     { id: 'channels', label: 'Tài Khoản Kênh', icon: Share2, count: data.channels?.length || 0 },
@@ -275,7 +299,7 @@ export default function App() {
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             
-            {/* Navigation Tabs */}
+            {/* Navigation Tabs (6 tabs) */}
             <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-900 border border-slate-300/60 dark:border-slate-800 overflow-x-auto scrollbar-none">
               {tabs.map(tab => {
                 const Icon = tab.icon;
@@ -285,7 +309,7 @@ export default function App() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all ${
+                    className={`inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all ${
                       isActive
                         ? 'bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 shadow-sm'
                         : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -336,11 +360,20 @@ export default function App() {
           <div className="py-24 text-center">
             <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
             <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
-              Đang tải toàn bộ dữ liệu tài nguyên & báo cáo Haru5C...
+              Đang tải toàn bộ dữ liệu tài nguyên, báo cáo & trực nhật Haru5C...
             </p>
           </div>
         ) : (
           <div className="animate-in fade-in duration-200">
+            {activeTab === 'duty' && (
+              <DutyScheduleSection
+                dutySchedule={data.dutySchedule}
+                dutySheetUrl={data.sheetInfo?.dutySheetUrl}
+                onCopy={handleCopy}
+                onUpdateAssignee={handleUpdateDutyAssignee}
+              />
+            )}
+
             {activeTab === 'checklist' && (
               <DailyChecklistSection
                 dailyReports={data.dailyReports}
@@ -407,7 +440,7 @@ export default function App() {
             <span>Haru Resource Hub • Đội Ngũ Haru5C Organic Bio Fertilizer</span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <a
               href="/api/export"
               target="_blank"
@@ -416,6 +449,16 @@ export default function App() {
             >
               <Download className="w-3.5 h-3.5" />
               <span>Sao lưu dữ liệu (JSON)</span>
+            </a>
+            <span>•</span>
+            <a
+              href={data.sheetInfo?.dutySheetUrl || 'https://docs.google.com/spreadsheets/d/1LanBepyxSocj4yZhbz1bAPwK-xODh-O85Teprvo-zTA/edit?gid=0#gid=0'}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 transition-colors"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Sheet Trực Nhật</span>
             </a>
             <span>•</span>
             <a

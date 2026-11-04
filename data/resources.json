@@ -3,7 +3,8 @@
     "sheetId": "1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388",
     "lastSyncedAt": "2026-11-04 15:53",
-    "checklistSheetUrl": "https://docs.google.com/spreadsheets/d/1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ/edit?gid=0#gid=0"
+    "checklistSheetUrl": "https://docs.google.com/spreadsheets/d/1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ/edit?gid=0#gid=0",
+    "dutySheetUrl": "https://docs.google.com/spreadsheets/d/1LanBepyxSocj4yZhbz1bAPwK-xODh-O85Teprvo-zTA/edit?gid=0#gid=0"
   },
   "media": [
     {
@@ -1234,17 +1235,17 @@
           {
             "id": "task-1",
             "text": "1. làm ảnh đăng page",
-            "completed": false
+            "completed": true
           },
           {
             "id": "task-2",
             "text": "2. làm video ads",
-            "completed": false
+            "completed": true
           },
           {
             "id": "task-3",
             "text": "3. tìm và tạo cảnh trám thêm bằng AI",
-            "completed": false
+            "completed": true
           }
         ]
       },
@@ -1549,6 +1550,188 @@
       "devices": "Ko giới hạn",
       "price": "240,000 ₫",
       "note": "Giá gốc"
+    }
+  ],
+  "dutySchedule": [
+    {
+      "date": "01/11",
+      "dayOfWeek": "CN",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "02/11",
+      "dayOfWeek": "T2",
+      "assignees": "Hồng - Ánh",
+      "isWeekend": false
+    },
+    {
+      "date": "03/11",
+      "dayOfWeek": "T3",
+      "assignees": "Tùng - Phước",
+      "isWeekend": false
+    },
+    {
+      "date": "04/11",
+      "dayOfWeek": "T4",
+      "assignees": "Tuấn - Hiệu",
+      "isWeekend": false
+    },
+    {
+      "date": "05/11",
+      "dayOfWeek": "T5",
+      "assignees": "Nguyệt - Tiến",
+      "isWeekend": false
+    },
+    {
+      "date": "06/11",
+      "dayOfWeek": "T6",
+      "assignees": "Vương - Nhung",
+      "isWeekend": false
+    },
+    {
+      "date": "07/11",
+      "dayOfWeek": "T7",
+      "assignees": "Nhã -",
+      "isWeekend": true
+    },
+    {
+      "date": "08/11",
+      "dayOfWeek": "CN",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "09/11",
+      "dayOfWeek": "T2",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "10/11",
+      "dayOfWeek": "T3",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "11/11",
+      "dayOfWeek": "T4",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "12/11",
+      "dayOfWeek": "T5",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "13/11",
+      "dayOfWeek": "T6",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "14/11",
+      "dayOfWeek": "T7",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "15/11",
+      "dayOfWeek": "CN",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "16/11",
+      "dayOfWeek": "T2",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "17/11",
+      "dayOfWeek": "T3",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "18/11",
+      "dayOfWeek": "T4",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "19/11",
+      "dayOfWeek": "T5",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "20/11",
+      "dayOfWeek": "T6",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "21/11",
+      "dayOfWeek": "T7",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "22/11",
+      "dayOfWeek": "CN",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "23/11",
+      "dayOfWeek": "T2",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "24/11",
+      "dayOfWeek": "T3",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "25/11",
+      "dayOfWeek": "T4",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "26/11",
+      "dayOfWeek": "T5",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "27/11",
+      "dayOfWeek": "T6",
+      "assignees": "",
+      "isWeekend": false
+    },
+    {
+      "date": "28/11",
+      "dayOfWeek": "T7",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "29/11",
+      "dayOfWeek": "CN",
+      "assignees": "",
+      "isWeekend": true
+    },
+    {
+      "date": "30/11",
+      "dayOfWeek": "T2",
+      "assignees": "",
+      "isWeekend": false
     }
   ]
 }

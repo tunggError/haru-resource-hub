@@ -92,13 +92,15 @@ function parseCSV(text) {
 async function syncFromGoogleSheets() {
   const SPREADSHEET_ID = '1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ';
   const CHECKLIST_ID = '1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ';
+  const DUTY_ID = '1LanBepyxSocj4yZhbz1bAPwK-xODh-O85Teprvo-zTA';
 
   const sheets = [
     { key: 'raw_materials', gid: '214358388', sheetId: SPREADSHEET_ID },
     { key: 'channels', gid: '0', sheetId: SPREADSHEET_ID },
     { key: 'tools', gid: '520506975', sheetId: SPREADSHEET_ID },
     { key: 'competitors', gid: '1914367773', sheetId: SPREADSHEET_ID },
-    { key: 'daily_report', gid: '0', sheetId: CHECKLIST_ID }
+    { key: 'daily_report', gid: '0', sheetId: CHECKLIST_ID },
+    { key: 'duty_schedule', gid: '0', sheetId: DUTY_ID }
   ];
 
   const fetched = {};
@@ -360,6 +362,25 @@ async function syncFromGoogleSheets() {
     });
   }
 
+  // 6. Process Duty Schedule
+  const rowsDuty = fetched.duty_schedule || [];
+  const dutyList = [];
+  for (let i = 1; i < rowsDuty.length; i++) {
+    const r = rowsDuty[i];
+    if (!r || !r.some(v => v.trim())) continue;
+    const date = r[0]?.trim() || '';
+    const dayOfWeek = r[1]?.trim() || '';
+    const assignees = r[2]?.trim() || '';
+    if (date) {
+      dutyList.push({
+        date,
+        dayOfWeek,
+        assignees,
+        isWeekend: ['T7', 'CN'].includes(dayOfWeek)
+      });
+    }
+  }
+
   const now = new Date();
   const pad = n => String(n).padStart(2, '0');
   const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
@@ -369,13 +390,15 @@ async function syncFromGoogleSheets() {
       sheetId: SPREADSHEET_ID,
       sheetUrl: 'https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388',
       checklistSheetUrl: 'https://docs.google.com/spreadsheets/d/1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ/edit?gid=0#gid=0',
+      dutySheetUrl: 'https://docs.google.com/spreadsheets/d/1LanBepyxSocj4yZhbz1bAPwK-xODh-O85Teprvo-zTA/edit?gid=0#gid=0',
       lastSyncedAt: timestamp
     },
     media: mediaList,
     channels: channelsList,
     tools: toolsList,
     competitors: competitorsList,
-    dailyReports: reportsByDate
+    dailyReports: reportsByDate,
+    dutySchedule: dutyList.length > 0 ? dutyList : (currentData.dutySchedule || [])
   };
 
   saveData(updatedData);
@@ -426,6 +449,20 @@ router.post('/checklist/update', (req, res) => {
 
   saveData(data);
   res.json({ success: true, dailyReports: data.dailyReports });
+});
+
+router.post('/duty/update', (req, res) => {
+  const { date, assignees } = req.body;
+  const data = readData();
+
+  if (!data.dutySchedule) data.dutySchedule = [];
+  const item = data.dutySchedule.find(d => d.date === date);
+  if (item) {
+    item.assignees = assignees;
+    saveData(data);
+    return res.json({ success: true, dutySchedule: data.dutySchedule });
+  }
+  res.status(404).json({ error: 'Date not found' });
 });
 
 router.post('/toggle-pin/:id', (req, res) => {

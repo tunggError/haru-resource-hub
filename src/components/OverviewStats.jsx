@@ -11,7 +11,9 @@ import {
   Copy,
   FolderOpen,
   Sparkles,
-  CheckSquare
+  CheckSquare,
+  CalendarCheck2,
+  Users
 } from 'lucide-react';
 
 export default function OverviewStats({
@@ -26,6 +28,7 @@ export default function OverviewStats({
   const tools = data?.tools || [];
   const competitors = data?.competitors || [];
   const dailyReports = data?.dailyReports || {};
+  const dutySchedule = data?.dutySchedule || [];
 
   const photoCount = media.filter(m => m.category === 'ảnh').length;
   const videoCount = media.filter(m => m.category === 'video').length;
@@ -35,10 +38,26 @@ export default function OverviewStats({
     title: 'Nguyên Liệu Tổng'
   };
 
+  // Today duty
+  const todayDuty = dutySchedule.find(d => d.date === '04/11') || {
+    assignees: 'Tuấn - Hiệu',
+    dayOfWeek: 'T4'
+  };
+
   // Calculate today's tasks
   const todayTasks = (dailyReports['04/11'] || []).reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
 
   const stats = [
+    {
+      id: 'duty',
+      label: 'Lịch Trực Nhật',
+      count: todayDuty.assignees || 'Tuấn - Hiệu',
+      isText: true,
+      detail: 'Hôm nay (04/11 - T4) trực nhật',
+      icon: CalendarCheck2,
+      gradient: 'from-amber-500 to-orange-600',
+      activeColor: 'ring-amber-500'
+    },
     {
       id: 'checklist',
       label: 'Checklist Hàng Ngày',
@@ -72,12 +91,12 @@ export default function OverviewStats({
       count: tools.length,
       detail: 'ChatGPT, Gemini, Veo3, LadiPage...',
       icon: Wrench,
-      gradient: 'from-amber-500 to-orange-600',
-      activeColor: 'ring-amber-500'
+      gradient: 'from-purple-500 to-indigo-600',
+      activeColor: 'ring-purple-500'
     },
     {
       id: 'competitors',
-      label: 'Phân Tích Đối Thủ',
+      label: 'Đối Thủ Cạnh Tranh',
       count: competitors.length,
       detail: 'Rootbio, Kagreen, Bio36, Dasshu...',
       icon: Swords,
@@ -98,13 +117,13 @@ export default function OverviewStats({
           <div className="max-w-2xl space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md text-emerald-100 border border-white/20">
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>Thư mục Master Google Drive</span>
+              <span>Hệ Thống Quản Lý Toàn Diện Haru5C</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Trung Tâm Tài Nguyên & Báo Cáo Haru5C
+              Trung Tâm Quản Lý Tài Nguyên, Báo Cáo & Trực Nhật
             </h1>
             <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-              Giải pháp loại bỏ nhầm lẫn link rải rác trên Google Sheet. Tất cả 38 thư mục ảnh & video, 11 kênh social, tài khoản AI, báo cáo checklist hằng ngày và bài học đối thủ được phân loại khoa học tại một nơi duy nhất.
+              Tất cả 38 thư mục ảnh & video, 11 kênh social, tài khoản công cụ AI, báo cáo checklist hằng ngày và lịch trực nhật văn phòng được tổng hợp tại một nơi duy nhất.
             </p>
           </div>
 
@@ -130,14 +149,23 @@ export default function OverviewStats({
           </div>
         </div>
 
-        {/* Quick info footer */}
-        <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-emerald-100/80">
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
-            Đồng bộ tự động từ 2 Google Sheet
-          </span>
-          <span>•</span>
-          <span>Cập nhật gần nhất: {data?.sheetInfo?.lastSyncedAt || 'Hôm nay'}</span>
+        {/* Quick info footer with Today Duty highlight */}
+        <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-emerald-100/90">
+          <div className="flex items-center gap-2 bg-white/15 px-3 py-1.5 rounded-xl border border-white/20 font-semibold">
+            <span>🧹 Trực nhật hôm nay (04/11 - T4):</span>
+            <strong className="text-white text-sm underline decoration-amber-300 decoration-2">
+              {todayDuty.assignees || 'Tuấn - Hiệu'}
+            </strong>
+          </div>
+
+          <div className="flex items-center gap-4 text-xs">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
+              Đồng bộ tự động từ 3 Google Sheet
+            </span>
+            <span>•</span>
+            <span>Cập nhật: {data?.sheetInfo?.lastSyncedAt || 'Hôm nay'}</span>
+          </div>
         </div>
       </div>
 
@@ -178,8 +206,8 @@ export default function OverviewStats({
         </div>
       )}
 
-      {/* Metric Cards Navigation (5 items) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+      {/* Metric Cards Navigation (6 items) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
         {stats.map(s => {
           const Icon = s.icon;
           const isActive = activeTab === s.id;
@@ -188,27 +216,33 @@ export default function OverviewStats({
             <button
               key={s.id}
               onClick={() => onTabChange(s.id)}
-              className={`text-left p-4 sm:p-5 rounded-2xl border transition-all relative overflow-hidden group ${
+              className={`text-left p-4 rounded-2xl border transition-all relative overflow-hidden group ${
                 isActive
                   ? 'bg-white dark:bg-slate-900 border-emerald-500/50 shadow-md ring-2 ring-emerald-500/20'
                   : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-sm'
               }`}
             >
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center justify-between mb-2">
                 <div
-                  className={`w-9 h-9 rounded-xl bg-gradient-to-tr ${s.gradient} text-white flex items-center justify-center shadow-md shadow-black/5 group-hover:scale-105 transition-transform`}
+                  className={`w-8 h-8 rounded-xl bg-gradient-to-tr ${s.gradient} text-white flex items-center justify-center shadow-md shadow-black/5 group-hover:scale-105 transition-transform`}
                 >
                   <Icon className="w-4 h-4" />
                 </div>
-                <span className="text-xl sm:text-2xl font-black text-slate-800 dark:text-white">
-                  {s.count}
-                </span>
+                {s.isText ? (
+                  <span className="text-xs font-black text-amber-600 dark:text-amber-400 truncate max-w-[100px] text-right">
+                    {s.count}
+                  </span>
+                ) : (
+                  <span className="text-xl font-black text-slate-800 dark:text-white">
+                    {s.count}
+                  </span>
+                )}
               </div>
               <div>
-                <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
+                <h3 className="font-bold text-xs text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
                   {s.label}
                 </h3>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
+                <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
                   {s.detail}
                 </p>
               </div>

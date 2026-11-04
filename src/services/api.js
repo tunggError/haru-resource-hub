@@ -55,6 +55,16 @@ export async function updateChecklistMember(date, memberName, updates) {
   return await res.json();
 }
 
+export async function updateDutyAssignee(date, assignees) {
+  const res = await fetch(`${API_BASE}/duty/update`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ date, assignees })
+  });
+  if (!res.ok) throw new Error('Update duty failed');
+  return await res.json();
+}
+
 export async function createResource(type, data) {
   const res = await fetch(`${API_BASE}/resources/${type}`, {
     method: 'POST',
