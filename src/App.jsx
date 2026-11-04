@@ -44,7 +44,7 @@ export default function App() {
     dutySchedule: [],
     sheetInfo: {}
   });
-  const [activeTab, setActiveTab] = useState('duty'); // Set 'duty' or 'checklist' as prominent
+  const [activeTab, setActiveTab] = useState('checklist'); // Default to checklist as requested
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -259,10 +259,10 @@ export default function App() {
   const todayDuty = (data.dutySchedule || []).find(d => d.date === '04/11');
 
   const tabs = [
-    { id: 'duty', label: 'Lịch Trực Nhật', icon: CalendarCheck2, count: todayDuty?.assignees ? 'Tuấn - Hiệu' : '30 ngày' },
     { id: 'checklist', label: 'Báo Cáo & Checklist', icon: CheckSquare, count: todayTasks || 18 },
     { id: 'media', label: 'Kho Media Haru', icon: FolderOpen, count: data.media?.length - 1 || 0 },
     { id: 'channels', label: 'Tài Khoản Kênh', icon: Share2, count: data.channels?.length || 0 },
+    { id: 'duty', label: 'Lịch Trực Nhật', icon: CalendarCheck2, count: todayDuty?.assignees ? 'Tuấn - Hiệu' : '30 ngày' },
     { id: 'tools', label: 'Công Cụ AI & SaaS', icon: Wrench, count: data.tools?.length || 0 },
     { id: 'competitors', label: 'Nghiên Cứu Đối Thủ', icon: Swords, count: data.competitors?.length || 0 }
   ];

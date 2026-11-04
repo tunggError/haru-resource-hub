@@ -49,16 +49,6 @@ export default function OverviewStats({
 
   const stats = [
     {
-      id: 'duty',
-      label: 'Lịch Trực Nhật',
-      count: todayDuty.assignees || 'Tuấn - Hiệu',
-      isText: true,
-      detail: 'Hôm nay (04/11 - T4) trực nhật',
-      icon: CalendarCheck2,
-      gradient: 'from-amber-500 to-orange-600',
-      activeColor: 'ring-amber-500'
-    },
-    {
       id: 'checklist',
       label: 'Checklist Hàng Ngày',
       count: todayTasks || 18,
@@ -84,6 +74,16 @@ export default function OverviewStats({
       icon: Share2,
       gradient: 'from-emerald-500 to-teal-600',
       activeColor: 'ring-emerald-500'
+    },
+    {
+      id: 'duty',
+      label: 'Lịch Trực Nhật',
+      count: todayDuty.assignees || 'Tuấn - Hiệu',
+      isText: true,
+      detail: 'Hôm nay (04/11 - T4) trực nhật',
+      icon: CalendarCheck2,
+      gradient: 'from-amber-500 to-orange-600',
+      activeColor: 'ring-amber-500'
     },
     {
       id: 'tools',
