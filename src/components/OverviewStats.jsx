@@ -114,17 +114,26 @@ export default function OverviewStats({
         <div className="absolute right-20 top-0 w-32 h-32 bg-teal-400/20 rounded-full blur-xl pointer-events-none" />
         
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="max-w-2xl space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md text-emerald-100 border border-white/20">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>Hệ Thống Quản Lý Toàn Diện Haru5C</span>
+          <div className="flex items-start sm:items-center gap-4 max-w-2xl">
+            <div className="relative shrink-0">
+              <img
+                src="/haru5c-logo.png"
+                alt="Logo Haru5C"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-contain bg-white p-1 shadow-2xl ring-4 ring-white/30"
+              />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Trung Tâm Quản Lý Tài Nguyên, Báo Cáo & Trực Nhật
-            </h1>
-            <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-              Tất cả 38 thư mục ảnh & video, 11 kênh social, tài khoản công cụ AI, báo cáo checklist hằng ngày và lịch trực nhật văn phòng được tổng hợp tại một nơi duy nhất.
-            </p>
+            <div className="space-y-1.5">
+              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md text-emerald-100 border border-white/20">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>Năng Lượng Cho Cây – Giàu Cho Đất</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
+                Hệ Thống Quản Trị Haru5C
+              </h1>
+              <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+                Tất cả 38 thư mục ảnh & video, 11 kênh social, tài khoản công cụ AI, báo cáo checklist hằng ngày và lịch trực nhật văn phòng được tổng hợp tại một nơi duy nhất.
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">

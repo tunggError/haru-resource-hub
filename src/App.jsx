@@ -433,11 +433,17 @@ export default function App() {
       {/* Footer */}
       <footer className="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-md bg-emerald-600 flex items-center justify-center text-white text-[10px] font-bold">
-              H
+          <div className="flex items-center gap-3">
+            <img
+              src="/haru5c-logo.png"
+              alt="Logo Haru5C"
+              className="w-7 h-7 rounded-full object-contain bg-white shadow-xs ring-1 ring-slate-300 dark:ring-slate-700"
+            />
+            <div>
+              <span className="font-bold text-slate-800 dark:text-slate-200">HARU5C</span>
+              <span className="mx-1.5">•</span>
+              <span>Năng Lượng Cho Cây – Giàu Cho Đất</span>
             </div>
-            <span>Haru Resource Hub • Đội Ngũ Haru5C Organic Bio Fertilizer</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
