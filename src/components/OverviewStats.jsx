@@ -10,7 +10,8 @@ import {
   Star,
   Copy,
   FolderOpen,
-  Sparkles
+  Sparkles,
+  CheckSquare
 } from 'lucide-react';
 
 export default function OverviewStats({
@@ -24,6 +25,7 @@ export default function OverviewStats({
   const channels = data?.channels || [];
   const tools = data?.tools || [];
   const competitors = data?.competitors || [];
+  const dailyReports = data?.dailyReports || {};
 
   const photoCount = media.filter(m => m.category === 'ảnh').length;
   const videoCount = media.filter(m => m.category === 'video').length;
@@ -33,11 +35,23 @@ export default function OverviewStats({
     title: 'Nguyên Liệu Tổng'
   };
 
+  // Calculate today's tasks
+  const todayTasks = (dailyReports['04/11'] || []).reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
+
   const stats = [
+    {
+      id: 'checklist',
+      label: 'Checklist Hàng Ngày',
+      count: todayTasks || 18,
+      detail: 'Đầu việc 4 nhân sự ngày hôm nay',
+      icon: CheckSquare,
+      gradient: 'from-teal-500 to-emerald-600',
+      activeColor: 'ring-teal-500'
+    },
     {
       id: 'media',
       label: 'Kho Media Haru',
-      count: media.length,
+      count: media.length - 1,
       detail: `${photoCount} Thư mục Ảnh • ${videoCount} Video`,
       icon: ImageIcon,
       gradient: 'from-blue-500 to-indigo-600',
@@ -87,10 +101,10 @@ export default function OverviewStats({
               <span>Thư mục Master Google Drive</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Trung Tâm Tài Nguyên Haru5C
+              Trung Tâm Tài Nguyên & Báo Cáo Haru5C
             </h1>
             <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-              Giải pháp loại bỏ nhầm lẫn link rải rác trên Google Sheet. Tất cả 39 thư mục ảnh & video, 11 kênh social, tài khoản AI và bài học đối thủ được phân loại khoa học tại một nơi duy nhất.
+              Giải pháp loại bỏ nhầm lẫn link rải rác trên Google Sheet. Tất cả 38 thư mục ảnh & video, 11 kênh social, tài khoản AI, báo cáo checklist hằng ngày và bài học đối thủ được phân loại khoa học tại một nơi duy nhất.
             </p>
           </div>
 
@@ -120,7 +134,7 @@ export default function OverviewStats({
         <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-emerald-100/80">
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
-            Đồng bộ tự động từ Google Sheet
+            Đồng bộ tự động từ 2 Google Sheet
           </span>
           <span>•</span>
           <span>Cập nhật gần nhất: {data?.sheetInfo?.lastSyncedAt || 'Hôm nay'}</span>
@@ -164,8 +178,8 @@ export default function OverviewStats({
         </div>
       )}
 
-      {/* Metric Cards Navigation */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Metric Cards Navigation (5 items) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
         {stats.map(s => {
           const Icon = s.icon;
           const isActive = activeTab === s.id;
@@ -174,7 +188,7 @@ export default function OverviewStats({
             <button
               key={s.id}
               onClick={() => onTabChange(s.id)}
-              className={`text-left p-5 rounded-2xl border transition-all relative overflow-hidden group ${
+              className={`text-left p-4 sm:p-5 rounded-2xl border transition-all relative overflow-hidden group ${
                 isActive
                   ? 'bg-white dark:bg-slate-900 border-emerald-500/50 shadow-md ring-2 ring-emerald-500/20'
                   : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-sm'
@@ -182,19 +196,19 @@ export default function OverviewStats({
             >
               <div className="flex items-center justify-between mb-3">
                 <div
-                  className={`w-10 h-10 rounded-xl bg-gradient-to-tr ${s.gradient} text-white flex items-center justify-center shadow-md shadow-black/5 group-hover:scale-105 transition-transform`}
+                  className={`w-9 h-9 rounded-xl bg-gradient-to-tr ${s.gradient} text-white flex items-center justify-center shadow-md shadow-black/5 group-hover:scale-105 transition-transform`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                 </div>
-                <span className="text-2xl font-black text-slate-800 dark:text-white">
+                <span className="text-xl sm:text-2xl font-black text-slate-800 dark:text-white">
                   {s.count}
                 </span>
               </div>
               <div>
-                <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
                   {s.label}
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
                   {s.detail}
                 </p>
               </div>
@@ -209,4 +223,3 @@ export default function OverviewStats({
     </div>
   );
 }
-

@@ -28,7 +28,7 @@ function readData() {
   } catch (err) {
     console.error('Error reading data:', err);
   }
-  return { media: [], channels: [], tools: [], competitors: [], sheetInfo: {} };
+  return { media: [], channels: [], tools: [], competitors: [], dailyReports: {}, proposals: [], sheetInfo: {} };
 }
 
 function saveData(data) {
@@ -38,7 +38,6 @@ function saveData(data) {
     fs.writeFileSync(LOCAL_DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
     return true;
   } catch (err) {
-    // If read-only filesystem (like Vercel), write to /tmp
     try {
       fs.writeFileSync(TMP_DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
       return true;
@@ -89,26 +88,29 @@ function parseCSV(text) {
   return lines;
 }
 
-// Sync with Google Sheets
+// Sync with Google Sheets (Resources + Checklist)
 async function syncFromGoogleSheets() {
   const SPREADSHEET_ID = '1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ';
+  const CHECKLIST_ID = '1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ';
+
   const sheets = [
-    { key: 'raw_materials', gid: '214358388' },
-    { key: 'channels', gid: '0' },
-    { key: 'tools', gid: '520506975' },
-    { key: 'competitors', gid: '1914367773' }
+    { key: 'raw_materials', gid: '214358388', sheetId: SPREADSHEET_ID },
+    { key: 'channels', gid: '0', sheetId: SPREADSHEET_ID },
+    { key: 'tools', gid: '520506975', sheetId: SPREADSHEET_ID },
+    { key: 'competitors', gid: '1914367773', sheetId: SPREADSHEET_ID },
+    { key: 'daily_report', gid: '0', sheetId: CHECKLIST_ID },
+    { key: 'proposals', gid: '165682046', sheetId: CHECKLIST_ID }
   ];
 
   const fetched = {};
 
   for (const s of sheets) {
-    const url = `https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/export?format=csv&gid=${s.gid}`;
+    const url = `https://docs.google.com/spreadsheets/d/${s.sheetId}/export?format=csv&gid=${s.gid}`;
     const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-    if (!res.ok) {
-      throw new Error(`Failed to fetch sheet gid ${s.gid}: ${res.statusText}`);
+    if (res.ok) {
+      const csvText = await res.text();
+      fetched[s.key] = parseCSV(csvText);
     }
-    const csvText = await res.text();
-    fetched[s.key] = parseCSV(csvText);
   }
 
   const currentData = readData();
@@ -116,6 +118,7 @@ async function syncFromGoogleSheets() {
     (currentData.media || []).filter(m => m.isPinned).map(m => m.title)
   );
 
+  // 1. Process Media
   const mediaList = [];
   mediaList.push({
     id: 'mat-root',
@@ -132,7 +135,6 @@ async function syncFromGoogleSheets() {
   const rawRows = fetched.raw_materials || [];
   for (let i = 4; i < rawRows.length; i++) {
     const row = rawRows[i];
-    // Ảnh
     if (row.length >= 3 && row[1]?.trim() && row[2]?.trim()) {
       const stt = row[0].trim();
       const name = row[1].trim();
@@ -163,7 +165,6 @@ async function syncFromGoogleSheets() {
       });
     }
 
-    // Video
     if (row.length >= 7 && row[5]?.trim() && row[6]?.trim()) {
       const stt_v = row[4].trim();
       const name_v = row[5].trim();
@@ -198,7 +199,7 @@ async function syncFromGoogleSheets() {
     }
   }
 
-  // Channels
+  // 2. Process Channels
   const channelsList = [];
   const chRows = fetched.channels || [];
   for (let i = 1; i < chRows.length; i++) {
@@ -239,7 +240,7 @@ async function syncFromGoogleSheets() {
     });
   }
 
-  // Tools
+  // 3. Process Tools
   const toolsList = [];
   const tRows = fetched.tools || [];
   for (let i = 1; i < tRows.length; i++) {
@@ -274,7 +275,7 @@ async function syncFromGoogleSheets() {
     });
   }
 
-  // Competitors
+  // 4. Process Competitors
   const competitorsList = [];
   const compRows = fetched.competitors || [];
   for (let i = 1; i < compRows.length; i++) {
@@ -300,6 +301,82 @@ async function syncFromGoogleSheets() {
     });
   }
 
+  // 5. Process Daily Reports & Checklist
+  const rowsBC = fetched.daily_report || [];
+  const reportsByDate = {};
+  let curDate = '';
+
+  for (const r of rowsBC) {
+    if (!r || !r.some(v => v.trim())) continue;
+    if (r[0] === 'Thời Gian') continue;
+    if (r[0]?.trim()) curDate = r[0].trim();
+    if (!curDate) continue;
+
+    const role = r[1]?.trim() || '';
+    const name = r[2]?.trim() || '';
+    const work = r[3]?.trim() || '';
+    const done = r[4]?.trim() || '';
+    const reason = r[5]?.trim() || '';
+    const note = r[6]?.trim() || '';
+
+    if (!name) continue;
+    if (!reportsByDate[curDate]) reportsByDate[curDate] = [];
+
+    const tasks = [];
+    if (work) {
+      const lines = work.split('\n');
+      for (const line of lines) {
+        const lStr = line.trim();
+        if (!lStr) continue;
+        let isDone = false;
+        const match = lStr.match(/^([0-9]+)[\.\)]\s*(.*)/);
+        if (match) {
+          const tNum = match[1];
+          const tText = match[2];
+          if (done && (done.includes(`${tNum}.`) || done.includes(`${tNum})`) || (tText.length > 5 && done.toLowerCase().includes(tText.toLowerCase().slice(0, 12))))) {
+            isDone = true;
+          }
+        } else {
+          if (done && lStr.length > 5 && done.toLowerCase().includes(lStr.toLowerCase().slice(0, 12))) {
+            isDone = true;
+          }
+        }
+        tasks.push({
+          id: `task-${tasks.length + 1}`,
+          text: lStr,
+          completed: isDone
+        });
+      }
+    }
+
+    reportsByDate[curDate].push({
+      id: `rep-${curDate}-${name}`,
+      name,
+      role,
+      workRaw: work,
+      doneRaw: done,
+      reason,
+      note,
+      tasks
+    });
+  }
+
+  // 6. Process Proposals
+  const rowsDX = fetched.proposals || [];
+  const proposalsList = [];
+  for (let i = 2; i <= 4; i++) {
+    const r = rowsDX[i];
+    if (!r) continue;
+    const toolName = r[1]?.trim() || '';
+    const duration = r[2]?.trim() || '';
+    const devices = r[3]?.trim() || '';
+    const price = r[4]?.trim() || '';
+    const note = r[5]?.trim() || '';
+    if (toolName) {
+      proposalsList.push({ name: toolName, duration, devices, price, note });
+    }
+  }
+
   const now = new Date();
   const pad = n => String(n).padStart(2, '0');
   const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
@@ -308,12 +385,15 @@ async function syncFromGoogleSheets() {
     sheetInfo: {
       sheetId: SPREADSHEET_ID,
       sheetUrl: 'https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388',
+      checklistSheetUrl: 'https://docs.google.com/spreadsheets/d/1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ/edit?gid=0#gid=0',
       lastSyncedAt: timestamp
     },
     media: mediaList,
     channels: channelsList,
     tools: toolsList,
-    competitors: competitorsList
+    competitors: competitorsList,
+    dailyReports: reportsByDate,
+    proposals: proposalsList
   };
 
   saveData(updatedData);
@@ -324,6 +404,46 @@ const router = express.Router();
 
 router.get('/data', (req, res) => {
   res.json(readData());
+});
+
+router.post('/checklist/toggle', (req, res) => {
+  const { date, memberName, taskId } = req.body;
+  const data = readData();
+
+  if (data.dailyReports && data.dailyReports[date]) {
+    const member = data.dailyReports[date].find(m => m.name === memberName);
+    if (member && member.tasks) {
+      const task = member.tasks.find(t => t.id === taskId);
+      if (task) {
+        task.completed = !task.completed;
+        saveData(data);
+        return res.json({ success: true, dailyReports: data.dailyReports });
+      }
+    }
+  }
+  res.status(404).json({ error: 'Task not found' });
+});
+
+router.post('/checklist/update', (req, res) => {
+  const { date, memberName, updates } = req.body;
+  const data = readData();
+
+  if (!data.dailyReports) data.dailyReports = {};
+  if (!data.dailyReports[date]) data.dailyReports[date] = [];
+
+  const idx = data.dailyReports[date].findIndex(m => m.name === memberName);
+  if (idx !== -1) {
+    data.dailyReports[date][idx] = { ...data.dailyReports[date][idx], ...updates };
+  } else {
+    data.dailyReports[date].push({
+      id: `rep-${date}-${memberName}`,
+      name: memberName,
+      ...updates
+    });
+  }
+
+  saveData(data);
+  res.json({ success: true, dailyReports: data.dailyReports });
 });
 
 router.post('/toggle-pin/:id', (req, res) => {
@@ -349,7 +469,7 @@ router.post('/toggle-pin/:id', (req, res) => {
 router.post('/sync', async (req, res) => {
   try {
     const updated = await syncFromGoogleSheets();
-    res.json({ success: true, message: 'Đồng bộ Google Sheet thành công!', data: updated });
+    res.json({ success: true, message: 'Đồng bộ Google Sheet & Báo Cáo thành công!', data: updated });
   } catch (err) {
     console.error('Sync failed:', err);
     res.status(500).json({ success: false, error: err.message });
@@ -414,7 +534,6 @@ router.get('/export', (req, res) => {
   res.send(JSON.stringify(data, null, 2));
 });
 
-// Mount router on both /api and / to handle Vercel serverless rewrites
 app.use('/api', router);
 app.use('/', router);
 

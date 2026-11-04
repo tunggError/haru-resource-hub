@@ -2,7 +2,8 @@
   "sheetInfo": {
     "sheetId": "1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388",
-    "lastSyncedAt": "2026-11-04 15:53"
+    "lastSyncedAt": "2026-11-04 15:53",
+    "checklistSheetUrl": "https://docs.google.com/spreadsheets/d/1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ/edit?gid=0#gid=0"
   },
   "media": [
     {
@@ -816,6 +817,738 @@
       "promotion": "Mua 1 tặng 1, 2 tặng 2",
       "sources": "bigwin.com.vn,bao nông nghiêp môi trường\nbáo dân việt",
       "fbUrl": "https://www.facebook.com/tongkhophanbonzozo/"
+    }
+  ],
+  "dailyReports": {
+    "26/10": [
+      {
+        "id": "rep-26/10-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "1. Tìm video xu hướng lên ý tưởng sáng tạo dần\n2. Tạo kênh 2 kênh tiktok (brand, perfomance)\n3. Tìm background cho livestream\n4. Định hướng lại nhân sự cách triển khai đăng từng kênh phân phối đạt hiệu quả\n5. Tìm cảnh trám phù hợp cho các dạng video \n6.Thống nhất tên page, địa chỉ, sđt liên kết kênh có chủ đích\n7. Đề xuất mua tk Capcut, Capcut, Veo3, Gemni",
+        "doneRaw": "1. Đã thu thập những video viral cho vào file\n2. Anh Hiến Tạo kênh fb, tiktok, youtube\n3. Đã tìm được 4 background livestream\n4. Định hướng nhân sự\n5. 3 video trám\n6. Đã thống nhất tên page, địa chỉ, sđt\n7. Đã đề xuất mua tk Capcut, Veo3, Gemni",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Tìm video xu hướng lên ý tưởng sáng tạo dần",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2. Tạo kênh 2 kênh tiktok (brand, perfomance)",
+            "completed": true
+          },
+          {
+            "id": "task-3",
+            "text": "3. Tìm background cho livestream",
+            "completed": true
+          },
+          {
+            "id": "task-4",
+            "text": "4. Định hướng lại nhân sự cách triển khai đăng từng kênh phân phối đạt hiệu quả",
+            "completed": true
+          },
+          {
+            "id": "task-5",
+            "text": "5. Tìm cảnh trám phù hợp cho các dạng video",
+            "completed": true
+          },
+          {
+            "id": "task-6",
+            "text": "6.Thống nhất tên page, địa chỉ, sđt liên kết kênh có chủ đích",
+            "completed": true
+          },
+          {
+            "id": "task-7",
+            "text": "7. Đề xuất mua tk Capcut, Capcut, Veo3, Gemni",
+            "completed": true
+          }
+        ]
+      },
+      {
+        "id": "rep-26/10-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "1. Đăng video/ảnh feedback khách hàng\n2. Làm 1 kịch bản brand + 2 kịch bản perfomace\n3. Tìm cảnh trám phù hợp cho kịch bản\n4. Tìm backgoround Livestream\n5. Nghiên cứu triển khai cách làm video Ai\n6. Tạo thêm kênh Fb,Youtube performance",
+        "doneRaw": "1.Đã đăng video feedback khách hàng\n2.Đã làm 1 kịch bản brand + 2 kịch bản \nperfomace\n3. Đã tìm cảnh trám phù hợp cho kịch bản\n4.Đã tìm backgoround Livestream\n5.Đã làm 1 video Ai feedback\n6.Lead đã tạo thêm kênh Fb,Tiktok, \nYoutube performance",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Đăng video/ảnh feedback khách hàng",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2. Làm 1 kịch bản brand + 2 kịch bản perfomace",
+            "completed": true
+          },
+          {
+            "id": "task-3",
+            "text": "3. Tìm cảnh trám phù hợp cho kịch bản",
+            "completed": true
+          },
+          {
+            "id": "task-4",
+            "text": "4. Tìm backgoround Livestream",
+            "completed": true
+          },
+          {
+            "id": "task-5",
+            "text": "5. Nghiên cứu triển khai cách làm video Ai",
+            "completed": true
+          },
+          {
+            "id": "task-6",
+            "text": "6. Tạo thêm kênh Fb,Youtube performance",
+            "completed": true
+          }
+        ]
+      },
+      {
+        "id": "rep-26/10-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "OFF",
+        "note": "",
+        "tasks": []
+      }
+    ],
+    "27/10": [
+      {
+        "id": "rep-27/10-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "1. Tìm video xu hướng lên ý tưởng sáng tạo dần\n2. Tìm background cho livestream\n3. Tìm cảnh trám phù hợp cho các dạng video",
+        "doneRaw": "1. Tìm video xu hướng lên ý tưởng sáng tạo dần\n2. Tìm background cho livestream\n3. Tìm cảnh trám phù hợp cho các dạng video",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Tìm video xu hướng lên ý tưởng sáng tạo dần",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2. Tìm background cho livestream",
+            "completed": true
+          },
+          {
+            "id": "task-3",
+            "text": "3. Tìm cảnh trám phù hợp cho các dạng video",
+            "completed": true
+          }
+        ]
+      },
+      {
+        "id": "rep-27/10-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "1. Đăng video/ảnh feedback khách hàng\n2. Làm 1 kịch bản brand + 2 kịch bản perfomace\n3. Tìm cảnh trám phù hợp cho kịch bản\n4. Tìm backgoround Livestream\n5. Nghiên cứu triển khai cách làm video Ai\n6. Tạo thêm kênh Fb,Youtube performance",
+        "doneRaw": "1.Đã đăng video feedback khách hàng\n2.Đã làm 1 kịch bản brand + 2 kịch bản \nperfomace\n3. Đã tìm cảnh trám phù hợp cho kịch bản\n4.Đã tìm backgoround Livestream\n5.Đã làm 1 video Ai feedback",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Đăng video/ảnh feedback khách hàng",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2. Làm 1 kịch bản brand + 2 kịch bản perfomace",
+            "completed": true
+          },
+          {
+            "id": "task-3",
+            "text": "3. Tìm cảnh trám phù hợp cho kịch bản",
+            "completed": true
+          },
+          {
+            "id": "task-4",
+            "text": "4. Tìm backgoround Livestream",
+            "completed": true
+          },
+          {
+            "id": "task-5",
+            "text": "5. Nghiên cứu triển khai cách làm video Ai",
+            "completed": true
+          },
+          {
+            "id": "task-6",
+            "text": "6. Tạo thêm kênh Fb,Youtube performance",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": "rep-27/10-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "OFF",
+        "note": "",
+        "tasks": []
+      }
+    ],
+    "03/11": [
+      {
+        "id": "rep-03/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "1. Thiết Kế 2 Flame FB + 2Flame Youtube\n2. Tạo 10 Via Seeding\n3. Sản xuất 1 video Brand + 1 video Performance\n4. Tạo quy trình kịch bản seeding\n5. Tạo 5 ảnh Feeback\n6. Thiết kế 2 banner",
+        "doneRaw": "1. Thiết kế 2 Flame FB\n5. Tạo 5 ảnh Feedback\n6. Thiết kế 2 banner",
+        "reason": "Hỗ trợ kế hoạch Content",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Thiết Kế 2 Flame FB + 2Flame Youtube",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2. Tạo 10 Via Seeding",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3. Sản xuất 1 video Brand + 1 video Performance",
+            "completed": false
+          },
+          {
+            "id": "task-4",
+            "text": "4. Tạo quy trình kịch bản seeding",
+            "completed": false
+          },
+          {
+            "id": "task-5",
+            "text": "5. Tạo 5 ảnh Feeback",
+            "completed": true
+          },
+          {
+            "id": "task-6",
+            "text": "6. Thiết kế 2 banner",
+            "completed": true
+          }
+        ]
+      },
+      {
+        "id": "rep-03/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "1.Làm video Performance\n2.đăng ảnh mới lên page\n3.Làm video AI đăng lên page\n4.lên camp test\n5. Cảnh Trám",
+        "doneRaw": "1.làm xong video performance\n2.đã đăng ảnh mới lên page\n3.làm xong video ai\n4.đã tìm cảnh làm video",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1.Làm video Performance",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2.đăng ảnh mới lên page",
+            "completed": true
+          },
+          {
+            "id": "task-3",
+            "text": "3.Làm video AI đăng lên page",
+            "completed": true
+          },
+          {
+            "id": "task-4",
+            "text": "4.lên camp test",
+            "completed": true
+          },
+          {
+            "id": "task-5",
+            "text": "5. Cảnh Trám",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": "rep-03/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "1. làm ảnh Ai từ tài nguyên mới đăng lên page \n2. Edit video live stream chạy ads\n3. tạo ảnh frame cho video live\n4. tạo ảnh feedback\n5. Lên ads test",
+        "doneRaw": "1.làm và đằn ảnh lên page\n2. xong video live\n3. tạo ảnh frame\n4. tạo ảnh fb",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. làm ảnh Ai từ tài nguyên mới đăng lên page",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2. Edit video live stream chạy ads",
+            "completed": true
+          },
+          {
+            "id": "task-3",
+            "text": "3. tạo ảnh frame cho video live",
+            "completed": true
+          },
+          {
+            "id": "task-4",
+            "text": "4. tạo ảnh feedback",
+            "completed": true
+          },
+          {
+            "id": "task-5",
+            "text": "5. Lên ads test",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": "rep-03/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "1. Lập kế hoạch định hướng Content 12 tháng\n2. Tìm hiểu các dữ liệu ảnh, video, kịch bản đã có\n3. Đề xuất sửa 4 video ngắn Tiktok đã quay\n4. Viết 2 bài đăng trên Fanpage facebook\n5. Seeding, tương tác, kết bạn với  10 khách FB",
+        "doneRaw": "1. Làm xong Kế hoạch Content\n2. Xong đề xuất chỉnh sửa 4 video ngắn\n3. Viết 7 kịch bản video Tiktok\n4. Cập nhật các dữ liệu video sẵn có",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Lập kế hoạch định hướng Content 12 tháng",
+            "completed": true
+          },
+          {
+            "id": "task-2",
+            "text": "2. Tìm hiểu các dữ liệu ảnh, video, kịch bản đã có",
+            "completed": true
+          },
+          {
+            "id": "task-3",
+            "text": "3. Đề xuất sửa 4 video ngắn Tiktok đã quay",
+            "completed": true
+          },
+          {
+            "id": "task-4",
+            "text": "4. Viết 2 bài đăng trên Fanpage facebook",
+            "completed": true
+          },
+          {
+            "id": "task-5",
+            "text": "5. Seeding, tương tác, kết bạn với  10 khách FB",
+            "completed": false
+          }
+        ]
+      }
+    ],
+    "04/11": [
+      {
+        "id": "rep-04/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "1. Thiết kế 2 Flame Youtube\n2. Tạo 10 Via Seeding\n3. Sản xuất 1 video Brand + 1 video Performance\n4. Tạo quy trình kịch bản seeding\n5. Họp triển khai kế hoạch Quý\n6. Xin ngân sách chạy ads\n7. Tạo Folder nguyên liệu từng mục để dễ làm việc",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Thiết kế 2 Flame Youtube",
+            "completed": false
+          },
+          {
+            "id": "task-2",
+            "text": "2. Tạo 10 Via Seeding",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3. Sản xuất 1 video Brand + 1 video Performance",
+            "completed": false
+          },
+          {
+            "id": "task-4",
+            "text": "4. Tạo quy trình kịch bản seeding",
+            "completed": false
+          },
+          {
+            "id": "task-5",
+            "text": "5. Họp triển khai kế hoạch Quý",
+            "completed": false
+          },
+          {
+            "id": "task-6",
+            "text": "6. Xin ngân sách chạy ads",
+            "completed": false
+          },
+          {
+            "id": "task-7",
+            "text": "7. Tạo Folder nguyên liệu từng mục để dễ làm việc",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": "rep-04/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "1.làm ảnh video đăng page\n2.làm thêm video chạy ads\n3.tìm và tạo thêm cảnh trám",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1.làm ảnh video đăng page",
+            "completed": false
+          },
+          {
+            "id": "task-2",
+            "text": "2.làm thêm video chạy ads",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3.tìm và tạo thêm cảnh trám",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": "rep-04/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "1. làm ảnh đăng page\n2. làm video ads\n3. tìm và tạo cảnh trám thêm bằng AI",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. làm ảnh đăng page",
+            "completed": false
+          },
+          {
+            "id": "task-2",
+            "text": "2. làm video ads",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3. tìm và tạo cảnh trám thêm bằng AI",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": "rep-04/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "1. Viết 5 kịch bản video Tiktok\n2. Tìm hiểu tư liệu bài đăng kênh Facebook\n3. Họp bàn cách triển khai video trên các Kênh",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. Viết 5 kịch bản video Tiktok",
+            "completed": false
+          },
+          {
+            "id": "task-2",
+            "text": "2. Tìm hiểu tư liệu bài đăng kênh Facebook",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3. Họp bàn cách triển khai video trên các Kênh",
+            "completed": false
+          }
+        ]
+      }
+    ],
+    "05/11": [
+      {
+        "id": "rep-05/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-05/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-05/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-05/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      }
+    ],
+    "06/11": [
+      {
+        "id": "rep-06/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-06/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-06/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-06/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      }
+    ],
+    "07/11": [
+      {
+        "id": "rep-07/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-07/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-07/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-07/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      }
+    ],
+    "08/11": [
+      {
+        "id": "rep-08/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-08/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-08/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-08/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      }
+    ],
+    "09/11": [
+      {
+        "id": "rep-09/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-09/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-09/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-09/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      }
+    ],
+    "10/11": [
+      {
+        "id": "rep-10/11-Vương",
+        "name": "Vương",
+        "role": "Lead Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-10/11-Phước",
+        "name": "Phước",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-10/11-Tùng",
+        "name": "Tùng",
+        "role": "Marketing",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      },
+      {
+        "id": "rep-10/11-Nhung",
+        "name": "Nhung",
+        "role": "Content",
+        "workRaw": "",
+        "doneRaw": "",
+        "reason": "",
+        "note": "",
+        "tasks": []
+      }
+    ]
+  },
+  "proposals": [
+    {
+      "name": "Capcut",
+      "duration": "30 ngày",
+      "devices": "1 Phone + 1 PC (Có thể dùng 2 thiết bị)",
+      "price": "59,000 ₫",
+      "note": ""
+    },
+    {
+      "name": "Combo\n- Gemini Pro\n- Antigravity Pro \n- Google One 5TB\n- Veo 4\n- Có thể tạo chủ fam add được 5 người",
+      "duration": "18 tháng",
+      "devices": "Ko giới hạn",
+      "price": "129,000 ₫",
+      "note": ""
+    },
+    {
+      "name": "Chat GPt",
+      "duration": "1 Tháng",
+      "devices": "Ko giới hạn",
+      "price": "240,000 ₫",
+      "note": "Giá gốc"
     }
   ]
 }

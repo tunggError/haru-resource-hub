@@ -35,6 +35,26 @@ export async function syncGoogleSheet() {
   return await res.json();
 }
 
+export async function toggleChecklistTask(date, memberName, taskId) {
+  const res = await fetch(`${API_BASE}/checklist/toggle`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ date, memberName, taskId })
+  });
+  if (!res.ok) throw new Error('Toggle task failed');
+  return await res.json();
+}
+
+export async function updateChecklistMember(date, memberName, updates) {
+  const res = await fetch(`${API_BASE}/checklist/update`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ date, memberName, updates })
+  });
+  if (!res.ok) throw new Error('Update checklist failed');
+  return await res.json();
+}
+
 export async function createResource(type, data) {
   const res = await fetch(`${API_BASE}/resources/${type}`, {
     method: 'POST',
@@ -62,4 +82,3 @@ export async function deleteResource(type, id) {
   if (!res.ok) throw new Error('Delete failed');
   return await res.json();
 }
-

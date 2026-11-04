@@ -5,12 +5,14 @@ import MediaSection from './components/MediaSection';
 import ChannelSection from './components/ChannelSection';
 import ToolSection from './components/ToolSection';
 import CompetitorSection from './components/CompetitorSection';
+import DailyChecklistSection from './components/DailyChecklistSection';
 import ResourceModal from './components/ResourceModal';
 import Toast from './components/Toast';
 import {
   fetchAllData,
   togglePin,
   syncGoogleSheet,
+  toggleChecklistTask,
   createResource,
   updateResource,
   deleteResource
@@ -21,6 +23,7 @@ import {
   Share2,
   Wrench,
   Swords,
+  CheckSquare,
   Layers,
   Sparkles,
   Command,
@@ -34,9 +37,11 @@ export default function App() {
     channels: [],
     tools: [],
     competitors: [],
+    dailyReports: {},
+    proposals: [],
     sheetInfo: {}
   });
-  const [activeTab, setActiveTab] = useState('media');
+  const [activeTab, setActiveTab] = useState('checklist'); // Default to checklist or media
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -126,14 +131,49 @@ export default function App() {
     }
   };
 
-  // Sync Google Sheet
+  // Checklist Task Toggle
+  const handleToggleTask = async (date, memberName, taskId) => {
+    // Optimistic UI update
+    setData(prev => {
+      const updatedReports = { ...prev.dailyReports };
+      if (updatedReports[date]) {
+        updatedReports[date] = updatedReports[date].map(m => {
+          if (m.name === memberName && m.tasks) {
+            return {
+              ...m,
+              tasks: m.tasks.map(t => {
+                if (t.id === taskId) {
+                  return { ...t, completed: !t.completed };
+                }
+                return t;
+              })
+            };
+          }
+          return m;
+        });
+      }
+      return { ...prev, dailyReports: updatedReports };
+    });
+
+    try {
+      const res = await toggleChecklistTask(date, memberName, taskId);
+      if (res.success) {
+        setData(prev => ({ ...prev, dailyReports: res.dailyReports }));
+      }
+    } catch (err) {
+      console.error(err);
+      addToast('Lỗi khi cập nhật tiến độ công việc', 'error');
+    }
+  };
+
+  // Sync Google Sheet (Both sheets)
   const handleSync = async () => {
     try {
       setIsSyncing(true);
       const res = await syncGoogleSheet();
       if (res.success) {
         setData(res.data);
-        addToast('Đồng bộ dữ liệu từ Google Sheet thành công!', 'success');
+        addToast('Đồng bộ Google Sheet & Báo Cáo thành công!', 'success');
       }
     } catch (err) {
       console.error(err);
@@ -147,7 +187,7 @@ export default function App() {
   const handleOpenAddModal = (type = activeTab) => {
     setModalState({
       isOpen: true,
-      type,
+      type: type === 'checklist' ? 'media' : type,
       initialData: null
     });
   };
@@ -193,7 +233,10 @@ export default function App() {
     }
   };
 
+  const todayTasks = (data.dailyReports?.['04/11'] || []).reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
+
   const tabs = [
+    { id: 'checklist', label: 'Báo Cáo & Checklist', icon: CheckSquare, count: todayTasks || 18 },
     { id: 'media', label: 'Kho Media Haru', icon: FolderOpen, count: data.media?.length - 1 || 0 },
     { id: 'channels', label: 'Tài Khoản Kênh', icon: Share2, count: data.channels?.length || 0 },
     { id: 'tools', label: 'Công Cụ AI & SaaS', icon: Wrench, count: data.tools?.length || 0 },
@@ -293,11 +336,23 @@ export default function App() {
           <div className="py-24 text-center">
             <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
             <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
-              Đang tải toàn bộ dữ liệu tài nguyên Haru5C...
+              Đang tải toàn bộ dữ liệu tài nguyên & báo cáo Haru5C...
             </p>
           </div>
         ) : (
           <div className="animate-in fade-in duration-200">
+            {activeTab === 'checklist' && (
+              <DailyChecklistSection
+                dailyReports={data.dailyReports}
+                proposals={data.proposals}
+                checklistSheetUrl={data.sheetInfo?.checklistSheetUrl}
+                onToggleTask={handleToggleTask}
+                onSync={handleSync}
+                isSyncing={isSyncing}
+                onCopy={handleCopy}
+              />
+            )}
+
             {activeTab === 'media' && (
               <MediaSection
                 items={data.media}
@@ -365,13 +420,23 @@ export default function App() {
             </a>
             <span>•</span>
             <a
-              href="https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388"
+              href={data.sheetInfo?.checklistSheetUrl || 'https://docs.google.com/spreadsheets/d/1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ/edit?gid=0#gid=0'}
               target="_blank"
               rel="noreferrer"
               className="hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 transition-colors"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              <span>Google Sheet Gốc</span>
+              <span>Sheet Báo Cáo</span>
+            </a>
+            <span>•</span>
+            <a
+              href={data.sheetInfo?.sheetUrl || 'https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388'}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 transition-colors"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Sheet Tài Nguyên</span>
             </a>
           </div>
         </div>
