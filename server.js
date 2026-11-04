@@ -90,8 +90,7 @@ async function syncFromGoogleSheets() {
     { key: 'channels', gid: '0', sheetId: SPREADSHEET_ID },
     { key: 'tools', gid: '520506975', sheetId: SPREADSHEET_ID },
     { key: 'competitors', gid: '1914367773', sheetId: SPREADSHEET_ID },
-    { key: 'daily_report', gid: '0', sheetId: CHECKLIST_ID },
-    { key: 'proposals', gid: '165682046', sheetId: CHECKLIST_ID }
+    { key: 'daily_report', gid: '0', sheetId: CHECKLIST_ID }
   ];
 
   const fetched = {};
@@ -353,22 +352,6 @@ async function syncFromGoogleSheets() {
     });
   }
 
-  // 6. Process Proposals
-  const rowsDX = fetched.proposals || [];
-  const proposalsList = [];
-  for (let i = 2; i <= 4; i++) {
-    const r = rowsDX[i];
-    if (!r) continue;
-    const toolName = r[1]?.trim() || '';
-    const duration = r[2]?.trim() || '';
-    const devices = r[3]?.trim() || '';
-    const price = r[4]?.trim() || '';
-    const note = r[5]?.trim() || '';
-    if (toolName) {
-      proposalsList.push({ name: toolName, duration, devices, price, note });
-    }
-  }
-
   const now = new Date();
   const pad = n => String(n).padStart(2, '0');
   const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
@@ -384,8 +367,7 @@ async function syncFromGoogleSheets() {
     channels: channelsList,
     tools: toolsList,
     competitors: competitorsList,
-    dailyReports: reportsByDate,
-    proposals: proposalsList
+    dailyReports: reportsByDate
   };
 
   saveData(updatedData);

@@ -8,30 +8,20 @@ import {
   AlertCircle,
   ExternalLink,
   Copy,
-  ChevronLeft,
-  ChevronRight,
   TrendingUp,
-  FileSpreadsheet,
-  RefreshCw,
-  ShoppingBag,
-  Sparkles,
-  Info
+  FileSpreadsheet
 } from 'lucide-react';
 
 export default function DailyChecklistSection({
   dailyReports = {},
-  proposals = [],
   checklistSheetUrl,
   onToggleTask,
   onSync,
   isSyncing,
   onCopy
 }) {
-  // Sort dates: prefer current day (04/11) as default
   const dateKeys = useMemo(() => {
-    const keys = Object.keys(dailyReports || {});
-    // Sort so recent or active dates come first
-    return keys;
+    return Object.keys(dailyReports || {});
   }, [dailyReports]);
 
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -39,8 +29,6 @@ export default function DailyChecklistSection({
     const keys = Object.keys(dailyReports || {});
     return keys[keys.length - 1] || '04/11';
   });
-
-  const [activeSubTab, setActiveSubTab] = useState('checklist'); // 'checklist' | 'proposals'
 
   // Get current date reports
   const currentMembers = dailyReports[selectedDate] || [];
@@ -73,7 +61,7 @@ export default function DailyChecklistSection({
       }
       if (m.tasks && m.tasks.length > 0) {
         text += `📌 Công việc:\n`;
-        m.tasks.forEach((t, idx) => {
+        m.tasks.forEach((t) => {
           text += `  ${t.completed ? '✅' : '⏳'} ${t.text}\n`;
         });
       }
@@ -121,7 +109,7 @@ export default function DailyChecklistSection({
               Theo Dõi Tiến Độ Nhân Sự Haru5C
             </h2>
             <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-              Quản lý đầu việc hàng ngày của từng nhân sự (Vương, Phước, Tùng, Nhung), check trực tiếp tiến độ, báo cáo lý do chưa hoàn thành và theo dõi các đề xuất công cụ.
+              Quản lý đầu việc hàng ngày của từng nhân sự (Vương, Phước, Tùng, Nhung), check trực tiếp tiến độ hoàn thành, báo cáo lý do chưa hoàn thành và xuất báo cáo gửi Zalo/Telegram.
             </p>
           </div>
 
@@ -143,340 +131,242 @@ export default function DailyChecklistSection({
               title="Sao chép toàn bộ báo cáo hôm nay để gửi Zalo / Telegram"
             >
               <Copy className="w-4 h-4" />
-              <span className="hidden sm:inline">Copy Báo Cáo</span>
+              <span className="hidden sm:inline">Copy Báo Cáo Gửi Zalo/Telegram</span>
             </button>
-          </div>
-        </div>
-
-        {/* Sub Navigation Bar inside banner */}
-        <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setActiveSubTab('checklist')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeSubTab === 'checklist'
-                  ? 'bg-white text-emerald-900 shadow-sm'
-                  : 'text-white/80 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              Checklist Công Việc Hàng Ngày
-            </button>
-            <button
-              onClick={() => setActiveSubTab('proposals')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeSubTab === 'proposals'
-                  ? 'bg-white text-emerald-900 shadow-sm'
-                  : 'text-white/80 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              Đề Xuất Mua Tài Khoản ({proposals.length})
-            </button>
-          </div>
-
-          <div className="text-xs text-emerald-100/80 hidden sm:block">
-            Tự động đồng bộ với Google Sheet
           </div>
         </div>
       </div>
 
-      {activeSubTab === 'proposals' ? (
-        /* PROPOSALS SECTION */
-        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold">
-                <ShoppingBag className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg text-slate-900 dark:text-slate-100">
-                  Bảng Đề Xuất Mua Tài Khoản Công Cụ
-                </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Tổng hợp nhu cầu tài khoản hỗ trợ sản xuất video, marketing và thiết kế
-                </p>
-              </div>
-            </div>
-
-            <div className="text-right">
-              <span className="text-xs text-slate-400">Tổng ngân sách đề xuất:</span>
-              <div className="text-xl font-black text-emerald-600 dark:text-emerald-400">
-                428,000 ₫
-              </div>
-            </div>
+      {/* Date Selector Strip & Progress */}
+      <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
+              Chọn ngày báo cáo:
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-            {proposals.map((prop, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-start justify-between">
-                    <h4 className="font-bold text-base text-slate-900 dark:text-slate-100 whitespace-pre-line">
-                      {prop.name}
-                    </h4>
-                    <span className="text-xs px-2.5 py-1 rounded-full font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">
-                      {prop.price}
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Hạn dùng: <strong>{prop.duration}</strong></span>
-                    </div>
-                    <div className="flex items-start gap-1.5">
-                      <User className="w-3.5 h-3.5 text-slate-400 mt-0.5 shrink-0" />
-                      <span>Thiết bị: {prop.devices}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {prop.note && (
-                  <div className="mt-3 pt-2 border-t border-slate-200 dark:border-slate-700 text-[11px] text-slate-400">
-                    Ghi chú: {prop.note}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        /* CHECKLIST SECTION */
-        <>
-          {/* Date Selector Strip & Progress */}
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-            
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
-                  Chọn ngày báo cáo:
-                </span>
-              </div>
-
-              {/* Progress Summary */}
-              {teamStats.total > 0 && (
-                <div className="flex items-center gap-3 text-xs font-semibold">
-                  <span className="text-slate-500 dark:text-slate-400">
-                    Tiến độ toàn đội ngày {selectedDate}:
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">
-                    {teamStats.completed}/{teamStats.total} việc ({teamStats.percent}%)
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Date Pills Horizontal Scroller */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
-              {dateKeys.map(date => {
-                const isSelected = selectedDate === date;
-                const isToday = date === '04/11';
-                const dayReports = dailyReports[date] || [];
-                const taskCount = dayReports.reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
-
-                return (
-                  <button
-                    key={date}
-                    onClick={() => setSelectedDate(date)}
-                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
-                      isSelected
-                        ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 ring-2 ring-emerald-500/20'
-                        : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
-                    }`}
-                  >
-                    <span>{date}</span>
-                    {isToday && (
-                      <span className={`text-[10px] px-1.5 py-0.2 rounded-md uppercase font-black ${
-                        isSelected ? 'bg-white/30 text-white' : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                      }`}>
-                        Hôm nay
-                      </span>
-                    )}
-                    {taskCount > 0 && !isToday && (
-                      <span className="text-[10px] opacity-75">
-                        ({taskCount} việc)
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Visual Team Progress Bar */}
-            {teamStats.total > 0 && (
-              <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
-                <div
-                  className="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full transition-all duration-500"
-                  style={{ width: `${teamStats.percent}%` }}
-                />
-              </div>
-            )}
-
-          </div>
-
-          {/* Members Checklist Cards */}
-          {currentMembers.length === 0 ? (
-            <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800">
-              <CheckSquare className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
-              <h3 className="text-base font-semibold text-slate-700 dark:text-slate-300">
-                Chưa có báo cáo nào trong ngày {selectedDate}
-              </h3>
-              <p className="text-sm text-slate-400 mt-1">
-                Hãy chọn ngày khác hoặc cập nhật dữ liệu từ Google Sheet.
-              </p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {currentMembers.map(member => {
-                const tasks = member.tasks || [];
-                const completedCount = tasks.filter(t => t.completed).length;
-                const memberPercent = tasks.length > 0 ? Math.round((completedCount / tasks.length) * 100) : 0;
-                const isOff = member.reason?.toLowerCase() === 'off';
-
-                return (
-                  <div
-                    key={member.id}
-                    className={`flex flex-col justify-between p-6 rounded-3xl bg-white dark:bg-slate-900 border transition-all ${
-                      isOff
-                        ? 'border-slate-200 dark:border-slate-800 opacity-60'
-                        : 'border-slate-200 dark:border-slate-800 hover:border-emerald-500/40 hover:shadow-lg'
-                    }`}
-                  >
-                    <div>
-                      
-                      {/* Member Header */}
-                      <div className="flex items-start justify-between gap-3 mb-4">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${getAvatarGradient(
-                              member.name
-                            )} text-white font-extrabold flex items-center justify-center text-base shadow-sm`}
-                          >
-                            {member.name.substring(0, 1).toUpperCase()}
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <h4 className="font-bold text-lg text-slate-900 dark:text-slate-100">
-                                {member.name}
-                              </h4>
-                              {isOff && (
-                                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
-                                  Nghỉ (OFF)
-                                </span>
-                              )}
-                            </div>
-                            <span
-                              className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border inline-block mt-0.5 ${getRoleBadgeStyle(
-                                member.role
-                              )}`}
-                            >
-                              {member.role || 'Marketing'}
-                            </span>
-                          </div>
-                        </div>
-
-                        {tasks.length > 0 && !isOff && (
-                          <div className="text-right">
-                            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                              {completedCount}/{tasks.length} xong
-                            </span>
-                            <div className="text-[11px] text-slate-400">
-                              {memberPercent}% hoàn thành
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Reason / Status Alert if exists */}
-                      {member.reason && !isOff && (
-                        <div className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2">
-                          <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                          <div>
-                            <span className="font-bold">Lý do chưa hoàn thành:</span> {member.reason}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Checklist Items */}
-                      {tasks.length > 0 ? (
-                        <div className="space-y-2 mt-3">
-                          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
-                            Danh sách công việc:
-                          </span>
-                          {tasks.map(task => (
-                            <div
-                              key={task.id}
-                              onClick={() => onToggleTask(selectedDate, member.name, task.id)}
-                              className={`flex items-start gap-3 p-2.5 rounded-xl border transition-all cursor-pointer group select-none ${
-                                task.completed
-                                  ? 'bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/40 text-slate-600 dark:text-slate-400'
-                                  : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200/80 dark:border-slate-700/60 text-slate-800 dark:text-slate-200 hover:border-emerald-400'
-                              }`}
-                            >
-                              <div
-                                className={`w-5 h-5 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
-                                  task.completed
-                                    ? 'bg-emerald-600 text-white'
-                                    : 'border-2 border-slate-300 dark:border-slate-600 group-hover:border-emerald-500'
-                                }`}
-                              >
-                                {task.completed && <CheckCircle2 className="w-4 h-4" />}
-                              </div>
-                              <span
-                                className={`text-xs sm:text-sm font-medium leading-relaxed ${
-                                  task.completed ? 'line-through text-slate-400 dark:text-slate-500' : ''
-                                }`}
-                              >
-                                {task.text}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="py-4 text-center text-xs text-slate-400 italic">
-                          Chưa có đầu việc cụ thể trong ngày này
-                        </div>
-                      )}
-
-                      {/* Done Details Summary */}
-                      {member.doneRaw && (
-                        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-1">
-                          <span className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                            Kết quả báo cáo:
-                          </span>
-                          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 text-xs text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
-                            {member.doneRaw}
-                          </div>
-                        </div>
-                      )}
-
-                    </div>
-
-                    {/* Member Footer */}
-                    <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                      <span>Ngày {selectedDate}</span>
-                      <button
-                        onClick={() => {
-                          const summary = `👤 ${member.name} (${selectedDate}):\n${member.tasks?.map(t => `${t.completed ? '✅' : '⏳'} ${t.text}`).join('\n') || ''}`;
-                          onCopy(summary, `Đã copy công việc của ${member.name}`);
-                        }}
-                        className="hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 font-medium"
-                      >
-                        <Copy className="w-3 h-3" />
-                        <span>Copy việc nhân sự</span>
-                      </button>
-                    </div>
-
-                  </div>
-                );
-              })}
+          {/* Progress Summary */}
+          {teamStats.total > 0 && (
+            <div className="flex items-center gap-3 text-xs font-semibold">
+              <span className="text-slate-500 dark:text-slate-400">
+                Tiến độ toàn đội ngày {selectedDate}:
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold">
+                {teamStats.completed}/{teamStats.total} việc ({teamStats.percent}%)
+              </span>
             </div>
           )}
-        </>
+        </div>
+
+        {/* Date Pills Horizontal Scroller */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
+          {dateKeys.map(date => {
+            const isSelected = selectedDate === date;
+            const isToday = date === '04/11';
+            const dayReports = dailyReports[date] || [];
+            const taskCount = dayReports.reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
+
+            return (
+              <button
+                key={date}
+                onClick={() => setSelectedDate(date)}
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                  isSelected
+                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 ring-2 ring-emerald-500/20'
+                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                }`}
+              >
+                <span>{date}</span>
+                {isToday && (
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-md uppercase font-black ${
+                    isSelected ? 'bg-white/30 text-white' : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                  }`}>
+                    Hôm nay
+                  </span>
+                )}
+                {taskCount > 0 && !isToday && (
+                  <span className="text-[10px] opacity-75">
+                    ({taskCount} việc)
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Visual Team Progress Bar */}
+        {teamStats.total > 0 && (
+          <div className="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full transition-all duration-500"
+              style={{ width: `${teamStats.percent}%` }}
+            />
+          </div>
+        )}
+
+      </div>
+
+      {/* Members Checklist Cards */}
+      {currentMembers.length === 0 ? (
+        <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800">
+          <CheckSquare className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+          <h3 className="text-base font-semibold text-slate-700 dark:text-slate-300">
+            Chưa có báo cáo nào trong ngày {selectedDate}
+          </h3>
+          <p className="text-sm text-slate-400 mt-1">
+            Hãy chọn ngày khác hoặc cập nhật dữ liệu từ Google Sheet.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {currentMembers.map(member => {
+            const tasks = member.tasks || [];
+            const completedCount = tasks.filter(t => t.completed).length;
+            const memberPercent = tasks.length > 0 ? Math.round((completedCount / tasks.length) * 100) : 0;
+            const isOff = member.reason?.toLowerCase() === 'off';
+
+            return (
+              <div
+                key={member.id}
+                className={`flex flex-col justify-between p-6 rounded-3xl bg-white dark:bg-slate-900 border transition-all ${
+                  isOff
+                    ? 'border-slate-200 dark:border-slate-800 opacity-60'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-emerald-500/40 hover:shadow-lg'
+                }`}
+              >
+                <div>
+                  
+                  {/* Member Header */}
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${getAvatarGradient(
+                          member.name
+                        )} text-white font-extrabold flex items-center justify-center text-base shadow-sm`}
+                      >
+                        {member.name.substring(0, 1).toUpperCase()}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-bold text-lg text-slate-900 dark:text-slate-100">
+                            {member.name}
+                          </h4>
+                          {isOff && (
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-bold">
+                              Nghỉ (OFF)
+                            </span>
+                          )}
+                        </div>
+                        <span
+                          className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border inline-block mt-0.5 ${getRoleBadgeStyle(
+                            member.role
+                          )}`}
+                        >
+                          {member.role || 'Marketing'}
+                        </span>
+                      </div>
+                    </div>
+
+                    {tasks.length > 0 && !isOff && (
+                      <div className="text-right">
+                        <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                          {completedCount}/{tasks.length} xong
+                        </span>
+                        <div className="text-[11px] text-slate-400">
+                          {memberPercent}% hoàn thành
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Reason / Status Alert if exists */}
+                  {member.reason && !isOff && (
+                    <div className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2">
+                      <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-bold">Lý do chưa hoàn thành:</span> {member.reason}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Checklist Items */}
+                  {tasks.length > 0 ? (
+                    <div className="space-y-2 mt-3">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                        Danh sách công việc:
+                      </span>
+                      {tasks.map(task => (
+                        <div
+                          key={task.id}
+                          onClick={() => onToggleTask(selectedDate, member.name, task.id)}
+                          className={`flex items-start gap-3 p-2.5 rounded-xl border transition-all cursor-pointer group select-none ${
+                            task.completed
+                              ? 'bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/40 text-slate-600 dark:text-slate-400'
+                              : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200/80 dark:border-slate-700/60 text-slate-800 dark:text-slate-200 hover:border-emerald-400'
+                          }`}
+                        >
+                          <div
+                            className={`w-5 h-5 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                              task.completed
+                                ? 'bg-emerald-600 text-white'
+                                : 'border-2 border-slate-300 dark:border-slate-600 group-hover:border-emerald-500'
+                            }`}
+                          >
+                            {task.completed && <CheckCircle2 className="w-4 h-4" />}
+                          </div>
+                          <span
+                            className={`text-xs sm:text-sm font-medium leading-relaxed ${
+                              task.completed ? 'line-through text-slate-400 dark:text-slate-500' : ''
+                            }`}
+                          >
+                            {task.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="py-4 text-center text-xs text-slate-400 italic">
+                      Chưa có đầu việc cụ thể trong ngày này
+                    </div>
+                  )}
+
+                  {/* Done Details Summary */}
+                  {member.doneRaw && (
+                    <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-1">
+                      <span className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                        Kết quả báo cáo:
+                      </span>
+                      <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 text-xs text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
+                        {member.doneRaw}
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+
+                {/* Member Footer */}
+                <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                  <span>Ngày {selectedDate}</span>
+                  <button
+                    onClick={() => {
+                      const summary = `👤 ${member.name} (${selectedDate}):\n${member.tasks?.map(t => `${t.completed ? '✅' : '⏳'} ${t.text}`).join('\n') || ''}`;
+                      onCopy(summary, `Đã copy công việc của ${member.name}`);
+                    }}
+                    className="hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 font-medium"
+                  >
+                    <Copy className="w-3 h-3" />
+                    <span>Copy việc nhân sự</span>
+                  </button>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
       )}
 
     </div>

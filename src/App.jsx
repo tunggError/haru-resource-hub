@@ -344,7 +344,6 @@ export default function App() {
             {activeTab === 'checklist' && (
               <DailyChecklistSection
                 dailyReports={data.dailyReports}
-                proposals={data.proposals}
                 checklistSheetUrl={data.sheetInfo?.checklistSheetUrl}
                 onToggleTask={handleToggleTask}
                 onSync={handleSync}
