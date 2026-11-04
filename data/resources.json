@@ -1733,5 +1733,67 @@
       "assignees": "",
       "isWeekend": false
     }
+  ],
+  "mediaProductions": [
+    {
+      "id": "mp-1",
+      "contentCode": "Content_T1",
+      "videoCode": "Video_T1",
+      "contentType": "Edit không có live",
+      "contentTitle": "Video giới thiệu tính năng phân bón Haru5C cho đất chai cứng",
+      "contentSummary": "Bài viết nhấn mạnh công nghệ Humic 7% giúp tơi xốp đất, tái sinh rễ nhanh mà không cần livestream",
+      "videoSummary": "Cắt dựng footage thực tế vườn sầu riêng + hiệu ứng chữ nổi bật công dụng",
+      "writer": "Tùng",
+      "editor": "Tùng",
+      "adsRunner": "Tùng",
+      "link": "VidNewKoLive_vid01.mp4",
+      "status": "Đang Chạy Ads",
+      "note": "Chạy test ngân sách nhỏ 100k/ngày"
+    },
+    {
+      "id": "mp-2",
+      "contentCode": "Content_T2",
+      "videoCode": "Video_T2",
+      "contentType": "Edit ghép thêm live",
+      "contentTitle": "Chia sẻ trải nghiệm nhà vườn kết hợp đoạn cắt Livestream",
+      "contentSummary": "Kịch bản kể câu chuyện chủ vườn miền Tây cứu vườn cam suy, lồng ghép tư vấn kỹ sư trong phiên live",
+      "videoSummary": "Ghép đoạn livestream kỹ sư tư vấn lúc 15:30 với footage thực tế cây đâm chồi xanh mướt",
+      "writer": "Tùng",
+      "editor": "Tùng",
+      "adsRunner": "Tùng",
+      "link": "https://drive.google.com/file/d/1s1zFNcJcimPkQHNVROsKomhnriwCZJsv/view?usp=drive_link",
+      "status": "Đã Hoàn Thiện",
+      "note": "Đã xuất file mp4 chất lượng 1080p trên Drive"
+    },
+    {
+      "id": "mp-3",
+      "contentCode": "Content_T3",
+      "videoCode": "Video_T3",
+      "contentType": "Ghép live + frame",
+      "contentTitle": "Video Livestream chốt đơn gắn khung ưu đãi Mua 3 Tặng 1",
+      "contentSummary": "Content thông báo chương trình khuyến mãi mua 3 tặng 1 thùng, giục khách hàng để lại SĐT",
+      "videoSummary": "Khung frame viền vàng đỏ bắt mắt, chạy chữ hotline chạy dọc video livestream",
+      "writer": "Tùng",
+      "editor": "Tùng",
+      "adsRunner": "Tùng",
+      "link": "https://drive.google.com/file/d/1EhvmllSBrhufJSgkTEjjtmWjvVTiTGHa/view?usp=drive_link",
+      "status": "Đang Chạy Ads",
+      "note": "Chiến dịch Performance Facebook"
+    },
+    {
+      "id": "mp-4",
+      "contentCode": "Content_V1",
+      "videoCode": "Video_V1",
+      "contentType": "Hướng Dẫn Sử Dụng",
+      "contentTitle": "Quy trình pha phân bón Haru5C đúng tỷ lệ tưới gốc và phun lá",
+      "contentSummary": "Hướng dẫn chi tiết bà con liều lượng pha 50ml cho bình 20L, thời điểm tưới sáng sớm hoặc chiều mát",
+      "videoSummary": "Kỹ sư nông nghiệp thực hành pha thuốc trực tiếp tại xô tưới, quay cận cảnh độ hòa tan",
+      "writer": "Vương",
+      "editor": "Vương",
+      "adsRunner": "",
+      "link": "",
+      "status": "Đang Quay / Dựng",
+      "note": "Chờ kỹ sư duyệt lại lời thoại"
+    }
   ]
 }

@@ -7,6 +7,7 @@ import ToolSection from './components/ToolSection';
 import CompetitorSection from './components/CompetitorSection';
 import DailyChecklistSection from './components/DailyChecklistSection';
 import DutyScheduleSection from './components/DutyScheduleSection';
+import MediaProductionSection from './components/MediaProductionSection';
 import ResourceModal from './components/ResourceModal';
 import Toast from './components/Toast';
 import {
@@ -15,6 +16,9 @@ import {
   syncGoogleSheet,
   toggleChecklistTask,
   updateDutyAssignee,
+  createMediaProduction,
+  updateMediaProduction,
+  deleteMediaProduction,
   createResource,
   updateResource,
   deleteResource
@@ -27,6 +31,7 @@ import {
   Swords,
   CheckSquare,
   CalendarCheck2,
+  Clapperboard,
   Layers,
   Sparkles,
   Command,
@@ -42,6 +47,7 @@ export default function App() {
     competitors: [],
     dailyReports: {},
     dutySchedule: [],
+    mediaProductions: [],
     sheetInfo: {}
   });
   const [activeTab, setActiveTab] = useState('checklist'); // Default to checklist as requested
@@ -205,11 +211,52 @@ export default function App() {
     }
   };
 
+  // Media Production Actions
+  const handleCreateMediaProduction = async (newItem) => {
+    try {
+      const res = await createMediaProduction(newItem);
+      if (res.success) {
+        setData(prev => ({ ...prev, mediaProductions: res.mediaProductions }));
+        addToast(`Đã thêm mã [${newItem.contentCode} / ${newItem.videoCode}] thành công!`, 'success');
+      }
+    } catch (err) {
+      console.error(err);
+      addToast('Lỗi khi thêm sản xuất media', 'error');
+    }
+  };
+
+  const handleUpdateMediaProduction = async (id, updates) => {
+    try {
+      const res = await updateMediaProduction(id, updates);
+      if (res.success) {
+        setData(prev => ({ ...prev, mediaProductions: res.mediaProductions }));
+        addToast('Đã cập nhật thông tin media thành công!', 'success');
+      }
+    } catch (err) {
+      console.error(err);
+      addToast('Lỗi khi cập nhật sản xuất media', 'error');
+    }
+  };
+
+  const handleDeleteMediaProduction = async (id) => {
+    if (!window.confirm('Bạn có chắc chắn muốn xóa bản ghi sản xuất media này?')) return;
+    try {
+      const res = await deleteMediaProduction(id);
+      if (res.success) {
+        setData(prev => ({ ...prev, mediaProductions: res.mediaProductions }));
+        addToast('Đã xóa bản ghi sản xuất media!', 'success');
+      }
+    } catch (err) {
+      console.error(err);
+      addToast('Lỗi khi xóa sản xuất media', 'error');
+    }
+  };
+
   // CRUD actions
   const handleOpenAddModal = (type = activeTab) => {
     setModalState({
       isOpen: true,
-      type: ['duty', 'checklist'].includes(type) ? 'media' : type,
+      type: ['duty', 'checklist', 'production'].includes(type) ? 'media' : type,
       initialData: null
     });
   };
@@ -260,9 +307,10 @@ export default function App() {
 
   const tabs = [
     { id: 'checklist', label: 'Báo Cáo & Checklist', icon: CheckSquare, count: todayTasks || 18 },
-    { id: 'media', label: 'Kho Media Haru', icon: FolderOpen, count: data.media?.length - 1 || 0 },
+    { id: 'production', label: 'Quản Lý Media & Mã', icon: Clapperboard, count: data.mediaProductions?.length || 4 },
     { id: 'channels', label: 'Tài Khoản Kênh', icon: Share2, count: data.channels?.length || 0 },
     { id: 'duty', label: 'Lịch Trực Nhật', icon: CalendarCheck2, count: todayDuty?.assignees ? 'Tuấn - Hiệu' : '30 ngày' },
+    { id: 'media', label: 'Kho Media Haru', icon: FolderOpen, count: data.media?.length - 1 || 0 },
     { id: 'tools', label: 'Công Cụ AI & SaaS', icon: Wrench, count: data.tools?.length || 0 },
     { id: 'competitors', label: 'Nghiên Cứu Đối Thủ', icon: Swords, count: data.competitors?.length || 0 }
   ];
@@ -385,6 +433,16 @@ export default function App() {
               />
             )}
 
+            {activeTab === 'production' && (
+              <MediaProductionSection
+                productions={data.mediaProductions || []}
+                onCreate={handleCreateMediaProduction}
+                onUpdate={handleUpdateMediaProduction}
+                onDelete={handleDeleteMediaProduction}
+                onCopy={handleCopy}
+              />
+            )}
+
             {activeTab === 'media' && (
               <MediaSection
                 items={data.media}
@@ -455,6 +513,16 @@ export default function App() {
             >
               <Download className="w-3.5 h-3.5" />
               <span>Sao lưu dữ liệu (JSON)</span>
+            </a>
+            <span>•</span>
+            <a
+              href="https://docs.google.com/spreadsheets/d/1e_Y8it3hqVZ-xenarc_wOJqCtypIbuvqnpGNT9nro1E/edit?gid=0#gid=0"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-emerald-600 dark:hover:text-emerald-400 flex items-center gap-1 transition-colors"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Sheet Media Gốc</span>
             </a>
             <span>•</span>
             <a

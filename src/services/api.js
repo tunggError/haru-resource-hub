@@ -65,6 +65,34 @@ export async function updateDutyAssignee(date, assignees) {
   return await res.json();
 }
 
+export async function createMediaProduction(data) {
+  const res = await fetch(`${API_BASE}/media-production`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('Create media production failed');
+  return await res.json();
+}
+
+export async function updateMediaProduction(id, data) {
+  const res = await fetch(`${API_BASE}/media-production/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('Update media production failed');
+  return await res.json();
+}
+
+export async function deleteMediaProduction(id) {
+  const res = await fetch(`${API_BASE}/media-production/${id}`, {
+    method: 'DELETE'
+  });
+  if (!res.ok) throw new Error('Delete media production failed');
+  return await res.json();
+}
+
 export async function createResource(type, data) {
   const res = await fetch(`${API_BASE}/resources/${type}`, {
     method: 'POST',

@@ -13,7 +13,8 @@ import {
   Sparkles,
   CheckSquare,
   CalendarCheck2,
-  Users
+  Users,
+  Clapperboard
 } from 'lucide-react';
 
 export default function OverviewStats({
@@ -29,6 +30,7 @@ export default function OverviewStats({
   const competitors = data?.competitors || [];
   const dailyReports = data?.dailyReports || {};
   const dutySchedule = data?.dutySchedule || [];
+  const mediaProductions = data?.mediaProductions || [];
 
   const photoCount = media.filter(m => m.category === 'ảnh').length;
   const videoCount = media.filter(m => m.category === 'video').length;
@@ -58,13 +60,13 @@ export default function OverviewStats({
       activeColor: 'ring-teal-500'
     },
     {
-      id: 'media',
-      label: 'Kho Media Haru',
-      count: media.length - 1,
-      detail: `${photoCount} Thư mục Ảnh • ${videoCount} Video`,
-      icon: ImageIcon,
-      gradient: 'from-blue-500 to-indigo-600',
-      activeColor: 'ring-blue-500'
+      id: 'production',
+      label: 'Quản Lý Media & Mã',
+      count: mediaProductions.length,
+      detail: 'Mã Content & Video 4 nhân sự',
+      icon: Clapperboard,
+      gradient: 'from-blue-600 to-indigo-700',
+      activeColor: 'ring-blue-600'
     },
     {
       id: 'channels',
@@ -84,6 +86,15 @@ export default function OverviewStats({
       icon: CalendarCheck2,
       gradient: 'from-amber-500 to-orange-600',
       activeColor: 'ring-amber-500'
+    },
+    {
+      id: 'media',
+      label: 'Kho Media Haru',
+      count: media.length - 1,
+      detail: `${photoCount} Thư mục Ảnh • ${videoCount} Video`,
+      icon: ImageIcon,
+      gradient: 'from-cyan-500 to-blue-600',
+      activeColor: 'ring-cyan-500'
     },
     {
       id: 'tools',
@@ -215,8 +226,8 @@ export default function OverviewStats({
         </div>
       )}
 
-      {/* Metric Cards Navigation (6 items) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
+      {/* Metric Cards Navigation (7 items) */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3.5">
         {stats.map(s => {
           const Icon = s.icon;
           const isActive = activeTab === s.id;

@@ -390,7 +390,8 @@ async function syncFromGoogleSheets() {
     tools: toolsList,
     competitors: competitorsList,
     dailyReports: reportsByDate,
-    dutySchedule: dutyList.length > 0 ? dutyList : (currentData.dutySchedule || [])
+    dutySchedule: dutyList.length > 0 ? dutyList : (currentData.dutySchedule || []),
+    mediaProductions: currentData.mediaProductions || []
   };
 
   saveData(updatedData);
@@ -458,6 +459,41 @@ app.post('/api/duty/update', (req, res) => {
     return res.json({ success: true, dutySchedule: data.dutySchedule });
   }
   res.status(404).json({ error: 'Date not found' });
+});
+
+// Media Production CRUD (Native code & content management)
+app.post('/api/media-production', (req, res) => {
+  const item = req.body;
+  const data = readData();
+  if (!data.mediaProductions) data.mediaProductions = [];
+  const newItem = {
+    ...item,
+    id: `mp-${Date.now()}`
+  };
+  data.mediaProductions.unshift(newItem);
+  saveData(data);
+  res.json({ success: true, item: newItem, mediaProductions: data.mediaProductions });
+});
+
+app.put('/api/media-production/:id', (req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
+  const data = readData();
+  if (!data.mediaProductions) data.mediaProductions = [];
+  const idx = data.mediaProductions.findIndex(m => m.id === id);
+  if (idx === -1) return res.status(404).json({ error: 'Item not found' });
+  data.mediaProductions[idx] = { ...data.mediaProductions[idx], ...updates };
+  saveData(data);
+  res.json({ success: true, item: data.mediaProductions[idx], mediaProductions: data.mediaProductions });
+});
+
+app.delete('/api/media-production/:id', (req, res) => {
+  const { id } = req.params;
+  const data = readData();
+  if (!data.mediaProductions) data.mediaProductions = [];
+  data.mediaProductions = data.mediaProductions.filter(m => m.id !== id);
+  saveData(data);
+  res.json({ success: true, mediaProductions: data.mediaProductions });
 });
 
 // Toggle Favorite / Pin
