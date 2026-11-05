@@ -24,6 +24,11 @@ import {
   deleteResource
 } from './services/api';
 import {
+  getTodayDateStr,
+  findTodayDuty,
+  calculateTasksForDate
+} from './utils/dateUtils';
+import {
   Search,
   FolderOpen,
   Share2,
@@ -302,14 +307,18 @@ export default function App() {
     }
   };
 
-  const todayTasks = (data.dailyReports?.['04/11'] || []).reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
-  const todayDuty = (data.dutySchedule || []).find(d => d.date === '04/11');
+  const todayDateStr = getTodayDateStr();
+  const todayTasks = calculateTasksForDate(data.dailyReports, todayDateStr) || 
+    (data.dailyReports && Object.keys(data.dailyReports).length > 0 
+      ? calculateTasksForDate(data.dailyReports, Object.keys(data.dailyReports).slice(-1)[0]) 
+      : 0);
+  const todayDuty = findTodayDuty(data.dutySchedule, todayDateStr);
 
   const tabs = [
-    { id: 'checklist', label: 'Báo Cáo & Checklist', icon: CheckSquare, count: todayTasks || 18 },
+    { id: 'checklist', label: 'Báo Cáo & Checklist', icon: CheckSquare, count: todayTasks || 0 },
     { id: 'production', label: 'Quản Lý Media & Mã', icon: Clapperboard, count: data.mediaProductions?.length || 4 },
     { id: 'channels', label: 'Tài Khoản Kênh', icon: Share2, count: data.channels?.length || 0 },
-    { id: 'duty', label: 'Lịch Trực Nhật', icon: CalendarCheck2, count: todayDuty?.assignees ? 'Tuấn - Hiệu' : '30 ngày' },
+    { id: 'duty', label: 'Lịch Trực Nhật', icon: CalendarCheck2, count: todayDuty?.assignees || '30 ngày' },
     { id: 'media', label: 'Kho Media Haru', icon: FolderOpen, count: data.media?.length - 1 || 0 },
     { id: 'tools', label: 'Công Cụ AI & SaaS', icon: Wrench, count: data.tools?.length || 0 },
     { id: 'competitors', label: 'Nghiên Cứu Đối Thủ', icon: Swords, count: data.competitors?.length || 0 }

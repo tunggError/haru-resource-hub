@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { getTodayDateStr } from '../utils/dateUtils';
 import {
   CheckSquare,
   Calendar,
@@ -24,11 +25,25 @@ export default function DailyChecklistSection({
     return Object.keys(dailyReports || {});
   }, [dailyReports]);
 
+  const todayStr = getTodayDateStr();
+
   const [selectedDate, setSelectedDate] = useState(() => {
-    if (dailyReports['04/11']) return '04/11';
+    if (dailyReports && dailyReports[todayStr]) return todayStr;
     const keys = Object.keys(dailyReports || {});
-    return keys[keys.length - 1] || '04/11';
+    return keys[keys.length - 1] || todayStr;
   });
+
+  // Keep selectedDate updated when dailyReports loads or changes
+  useEffect(() => {
+    if (dailyReports && Object.keys(dailyReports).length > 0) {
+      if (dailyReports[todayStr]) {
+        setSelectedDate(todayStr);
+      } else if (!dailyReports[selectedDate]) {
+        const keys = Object.keys(dailyReports);
+        setSelectedDate(keys[keys.length - 1]);
+      }
+    }
+  }, [dailyReports, todayStr]);
 
   // Get current date reports
   const currentMembers = dailyReports[selectedDate] || [];
@@ -165,7 +180,7 @@ export default function DailyChecklistSection({
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
           {dateKeys.map(date => {
             const isSelected = selectedDate === date;
-            const isToday = date === '04/11';
+            const isToday = date === todayStr;
             const dayReports = dailyReports[date] || [];
             const taskCount = dayReports.reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
 

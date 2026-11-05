@@ -2,9 +2,9 @@
   "sheetInfo": {
     "sheetId": "1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ",
     "sheetUrl": "https://docs.google.com/spreadsheets/d/1rs11DMTVgLmMbZJ0XnQTVqiTM3K5drrFrpGvQeyJ8fQ/edit?gid=214358388#gid=214358388",
-    "lastSyncedAt": "2026-11-04 15:53",
     "checklistSheetUrl": "https://docs.google.com/spreadsheets/d/1jsQPZeIsKwkOYAxZ3uq0OZ5TiCqUDBrPb0zrTxQghzQ/edit?gid=0#gid=0",
-    "dutySheetUrl": "https://docs.google.com/spreadsheets/d/1LanBepyxSocj4yZhbz1bAPwK-xODh-O85Teprvo-zTA/edit?gid=0#gid=0"
+    "dutySheetUrl": "https://docs.google.com/spreadsheets/d/1LanBepyxSocj4yZhbz1bAPwK-xODh-O85Teprvo-zTA/edit?gid=0#gid=0",
+    "lastSyncedAt": "2026-11-05 08:47"
   },
   "media": [
     {
@@ -714,6 +714,20 @@
       "viaName": "",
       "manager": "",
       "status": "Đang chuẩn bị"
+    },
+    {
+      "id": "chan-12-11",
+      "stt": "12",
+      "platformType": "Facebook Performance",
+      "platform": "Facebook",
+      "channelName": "Haru5C-Công Ty Phân Bón Việt Nam Chính Hãng",
+      "url": "https://www.facebook.com/haru5c/",
+      "account": "",
+      "password": "",
+      "twoFactor": "",
+      "viaName": "",
+      "manager": "Tùng",
+      "status": "Đang hoạt động"
     }
   ],
   "tools": [
@@ -1202,24 +1216,24 @@
         "name": "Phước",
         "role": "Marketing",
         "workRaw": "1.làm ảnh video đăng page\n2.làm thêm video chạy ads\n3.tìm và tạo thêm cảnh trám",
-        "doneRaw": "",
+        "doneRaw": "1.đã làm ảnh đăng page\n2.đã làm thêm video chạy ads\n3.tìm và tạo thêm cảnh trám\"",
         "reason": "",
         "note": "",
         "tasks": [
           {
             "id": "task-1",
             "text": "1.làm ảnh video đăng page",
-            "completed": false
+            "completed": true
           },
           {
             "id": "task-2",
             "text": "2.làm thêm video chạy ads",
-            "completed": false
+            "completed": true
           },
           {
             "id": "task-3",
             "text": "3.tìm và tạo thêm cảnh trám",
-            "completed": false
+            "completed": true
           }
         ]
       },
@@ -1228,7 +1242,7 @@
         "name": "Tùng",
         "role": "Marketing",
         "workRaw": "1. làm ảnh đăng page\n2. làm video ads\n3. tìm và tạo cảnh trám thêm bằng AI",
-        "doneRaw": "",
+        "doneRaw": "1.đã làm ảnh đăng page\n2.đã làm thêm video chạy ads\n3.tìm và tạo thêm cảnh trám",
         "reason": "",
         "note": "",
         "tasks": [
@@ -1254,24 +1268,24 @@
         "name": "Nhung",
         "role": "Content",
         "workRaw": "1. Viết 5 kịch bản video Tiktok\n2. Tìm hiểu tư liệu bài đăng kênh Facebook\n3. Họp bàn cách triển khai video trên các Kênh",
-        "doneRaw": "",
+        "doneRaw": "1. viết xong 5 kịch bản video tiktok\n2. tìm hiểu các dữ liệu video, live đã quay\n3. cùng nhóm trao đổi về ảnh thumb video, màu sắc, phông chữ, logo",
         "reason": "",
         "note": "",
         "tasks": [
           {
             "id": "task-1",
             "text": "1. Viết 5 kịch bản video Tiktok",
-            "completed": false
+            "completed": true
           },
           {
             "id": "task-2",
             "text": "2. Tìm hiểu tư liệu bài đăng kênh Facebook",
-            "completed": false
+            "completed": true
           },
           {
             "id": "task-3",
             "text": "3. Họp bàn cách triển khai video trên các Kênh",
-            "completed": false
+            "completed": true
           }
         ]
       }
@@ -1291,31 +1305,84 @@
         "id": "rep-05/11-Phước",
         "name": "Phước",
         "role": "Marketing",
-        "workRaw": "",
+        "workRaw": "1.làm ảnh video đăng page\n2.làm thêm video chạy ads\n3.tìm và tạo thêm cảnh trám",
         "doneRaw": "",
         "reason": "",
         "note": "",
-        "tasks": []
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1.làm ảnh video đăng page",
+            "completed": false
+          },
+          {
+            "id": "task-2",
+            "text": "2.làm thêm video chạy ads",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3.tìm và tạo thêm cảnh trám",
+            "completed": false
+          }
+        ]
       },
       {
         "id": "rep-05/11-Tùng",
         "name": "Tùng",
         "role": "Marketing",
-        "workRaw": "",
+        "workRaw": "1.Làm ảnh đăng page\n2.Làm thêm video chạy ads\n3.Tìm và tạo thêm cảnh trám\n4. Tạo frame ghép video",
         "doneRaw": "",
         "reason": "",
         "note": "",
-        "tasks": []
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1.Làm ảnh đăng page",
+            "completed": false
+          },
+          {
+            "id": "task-2",
+            "text": "2.Làm thêm video chạy ads",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3.Tìm và tạo thêm cảnh trám",
+            "completed": false
+          },
+          {
+            "id": "task-4",
+            "text": "4. Tạo frame ghép video",
+            "completed": false
+          }
+        ]
       },
       {
         "id": "rep-05/11-Nhung",
         "name": "Nhung",
         "role": "Content",
-        "workRaw": "",
+        "workRaw": "1. viết 5 kịch bản video tiktok\n2. chuẩn bị các video đã quay lên lịch đăng\n3. trao đổi về các dạng video, số lượng, khung giờ đăng tải",
         "doneRaw": "",
         "reason": "",
         "note": "",
-        "tasks": []
+        "tasks": [
+          {
+            "id": "task-1",
+            "text": "1. viết 5 kịch bản video tiktok",
+            "completed": false
+          },
+          {
+            "id": "task-2",
+            "text": "2. chuẩn bị các video đã quay lên lịch đăng",
+            "completed": false
+          },
+          {
+            "id": "task-3",
+            "text": "3. trao đổi về các dạng video, số lượng, khung giờ đăng tải",
+            "completed": false
+          }
+        ]
       }
     ],
     "06/11": [
@@ -1529,29 +1596,6 @@
       }
     ]
   },
-  "proposals": [
-    {
-      "name": "Capcut",
-      "duration": "30 ngày",
-      "devices": "1 Phone + 1 PC (Có thể dùng 2 thiết bị)",
-      "price": "59,000 ₫",
-      "note": ""
-    },
-    {
-      "name": "Combo\n- Gemini Pro\n- Antigravity Pro \n- Google One 5TB\n- Veo 4\n- Có thể tạo chủ fam add được 5 người",
-      "duration": "18 tháng",
-      "devices": "Ko giới hạn",
-      "price": "129,000 ₫",
-      "note": ""
-    },
-    {
-      "name": "Chat GPt",
-      "duration": "1 Tháng",
-      "devices": "Ko giới hạn",
-      "price": "240,000 ₫",
-      "note": "Giá gốc"
-    }
-  ],
   "dutySchedule": [
     {
       "date": "01/11",

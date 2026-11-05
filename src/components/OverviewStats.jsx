@@ -1,5 +1,12 @@
 import React from 'react';
 import {
+  getTodayDateStr,
+  getDayOfWeekShort,
+  getDayOfWeekFull,
+  findTodayDuty,
+  calculateTasksForDate
+} from '../utils/dateUtils';
+import {
   FolderGit2,
   Image as ImageIcon,
   Video as VideoIcon,
@@ -40,21 +47,24 @@ export default function OverviewStats({
     title: 'Nguyên Liệu Tổng'
   };
 
-  // Today duty
-  const todayDuty = dutySchedule.find(d => d.date === '04/11') || {
-    assignees: 'Tuấn - Hiệu',
-    dayOfWeek: 'T4'
-  };
+  // Dynamic Today Info
+  const todayStr = getTodayDateStr();
+  const todayDayOfWeek = getDayOfWeekShort();
+  const todayDayFull = getDayOfWeekFull();
+  const todayDuty = findTodayDuty(dutySchedule, todayStr);
 
   // Calculate today's tasks
-  const todayTasks = (dailyReports['04/11'] || []).reduce((acc, m) => acc + (m.tasks?.length || 0), 0);
+  const todayTasks = calculateTasksForDate(dailyReports, todayStr) || 
+    (dailyReports && Object.keys(dailyReports).length > 0 
+      ? calculateTasksForDate(dailyReports, Object.keys(dailyReports).slice(-1)[0]) 
+      : 0);
 
   const stats = [
     {
       id: 'checklist',
       label: 'Checklist Hàng Ngày',
-      count: todayTasks || 18,
-      detail: 'Đầu việc 4 nhân sự ngày hôm nay',
+      count: todayTasks,
+      detail: `Đầu việc 4 nhân sự (${todayStr})`,
       icon: CheckSquare,
       gradient: 'from-teal-500 to-emerald-600',
       activeColor: 'ring-teal-500'
@@ -80,9 +90,9 @@ export default function OverviewStats({
     {
       id: 'duty',
       label: 'Lịch Trực Nhật',
-      count: todayDuty.assignees || 'Tuấn - Hiệu',
+      count: todayDuty.assignees || 'Chưa phân công',
       isText: true,
-      detail: 'Hôm nay (04/11 - T4) trực nhật',
+      detail: `Hôm nay (${todayStr} - ${todayDuty.dayOfWeek || todayDayOfWeek}) trực nhật`,
       icon: CalendarCheck2,
       gradient: 'from-amber-500 to-orange-600',
       activeColor: 'ring-amber-500'
@@ -172,9 +182,9 @@ export default function OverviewStats({
         {/* Quick info footer with Today Duty highlight */}
         <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-emerald-100/90">
           <div className="flex items-center gap-2 bg-white/15 px-3 py-1.5 rounded-xl border border-white/20 font-semibold">
-            <span>🧹 Trực nhật hôm nay (04/11 - T4):</span>
+            <span>🧹 Trực nhật hôm nay ({todayStr} - {todayDuty.dayOfWeek || todayDayOfWeek}):</span>
             <strong className="text-white text-sm underline decoration-amber-300 decoration-2">
-              {todayDuty.assignees || 'Tuấn - Hiệu'}
+              {todayDuty.assignees || 'Chưa phân công'}
             </strong>
           </div>
 

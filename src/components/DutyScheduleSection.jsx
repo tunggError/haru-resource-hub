@@ -1,5 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import {
+  getTodayDateStr,
+  getTomorrowDateStr,
+  getDayOfWeekFull,
+  getCurrentWeekDates,
+  getCurrentWeekRangeText,
+  findTodayDuty,
+  findTomorrowDuty
+} from '../utils/dateUtils';
+import {
   Sparkles,
   Calendar,
   User,
@@ -41,19 +50,14 @@ export default function DutyScheduleSection({
     return Array.from(set).sort();
   }, [dutySchedule]);
 
-  // Today is 04/11
-  const todayItem = dutySchedule.find(d => d.date === '04/11') || {
-    date: '04/11',
-    dayOfWeek: 'T4',
-    assignees: 'Tuấn - Hiệu'
-  };
+  // Dynamic Today and Tomorrow
+  const todayStr = getTodayDateStr();
+  const tomorrowStr = getTomorrowDateStr();
+  const todayDayFull = getDayOfWeekFull();
+  const tomorrowDayFull = getDayOfWeekFull(new Date(Date.now() + 86400000));
 
-  // Tomorrow is 05/11
-  const tomorrowItem = dutySchedule.find(d => d.date === '05/11') || {
-    date: '05/11',
-    dayOfWeek: 'T5',
-    assignees: 'Nguyệt - Tiến'
-  };
+  const todayItem = findTodayDuty(dutySchedule, todayStr);
+  const tomorrowItem = findTomorrowDuty(dutySchedule, tomorrowStr);
 
   // Filtered days
   const filteredSchedule = useMemo(() => {
@@ -70,12 +74,14 @@ export default function DutyScheduleSection({
 
   // Copy week schedule
   const handleCopyWeekSchedule = () => {
-    let text = `🧹 LỊCH TRỰC NHẬT VĂN PHÒNG HARU5C (TUẦN 02/11 - 07/11)\n`;
+    const weekDates = getCurrentWeekDates();
+    const weekRange = getCurrentWeekRangeText();
+    let text = `🧹 LỊCH TRỰC NHẬT VĂN PHÒNG HARU5C (${weekRange.toUpperCase()})\n`;
     text += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
     
-    const weekItems = dutySchedule.filter(d => ['02/11', '03/11', '04/11', '05/11', '06/11', '07/11'].includes(d.date));
+    const weekItems = dutySchedule.filter(d => weekDates.includes(d.date));
     weekItems.forEach(d => {
-      const isToday = d.date === '04/11';
+      const isToday = d.date === todayStr;
       text += `${isToday ? '👉 ' : '  '}• ${d.dayOfWeek} (${d.date}): ${d.assignees || 'Chưa phân công'}${isToday ? ' 🌟 (HÔM NAY)' : ''}\n`;
     });
     text += `\n📌 Nhiệm vụ: Đổ rác, lau bàn trà, quét văn phòng cuối ngày. Cảm ơn cả nhà!`;
@@ -146,10 +152,10 @@ export default function DutyScheduleSection({
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-white text-orange-600 flex flex-col items-center justify-center shadow-md font-black">
                 <span className="text-[10px] uppercase tracking-wider text-orange-400">HÔM NAY</span>
-                <span className="text-base leading-none">04/11</span>
+                <span className="text-base leading-none">{todayStr}</span>
               </div>
               <div>
-                <span className="text-xs font-semibold text-amber-200">Trực Nhật Hôm Nay (Thứ 4):</span>
+                <span className="text-xs font-semibold text-amber-200">Trực Nhật Hôm Nay ({todayDayFull}):</span>
                 <h3 className="text-lg font-black text-white">
                   {todayItem.assignees || 'Chưa phân công'}
                 </h3>
@@ -165,17 +171,17 @@ export default function DutyScheduleSection({
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-white/20 text-white flex flex-col items-center justify-center font-bold">
                 <span className="text-[10px] uppercase tracking-wider text-amber-200">NGÀY MAI</span>
-                <span className="text-base leading-none">05/11</span>
+                <span className="text-base leading-none">{tomorrowStr}</span>
               </div>
               <div>
-                <span className="text-xs text-amber-200/80">Trực Nhật Ngày Mai (Thứ 5):</span>
+                <span className="text-xs text-amber-200/80">Trực Nhật Ngày Mai ({tomorrowDayFull}):</span>
                 <h3 className="text-base font-bold text-white">
                   {tomorrowItem.assignees || 'Chưa phân công'}
                 </h3>
               </div>
             </div>
             <div className="text-xs text-amber-200/70">
-              Thứ 5
+              {tomorrowDayFull}
             </div>
           </div>
 
@@ -234,7 +240,7 @@ export default function DutyScheduleSection({
       {/* Grid of Schedule Days */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5">
         {filteredSchedule.map(item => {
-          const isToday = item.date === '04/11';
+          const isToday = item.date === todayStr;
           const hasAssignees = !!item.assignees?.trim();
           const isWeekend = item.isWeekend;
           const isEditing = editingDate === item.date;
